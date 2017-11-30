@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YTKRequest.h"
 
 typedef enum {
     SexMale,
@@ -21,7 +22,7 @@ typedef enum {
 @property (strong, nonatomic) NSNumber *type;
 @end
 
-@interface User : NSObject
+@interface User : YTKRequest
 @property (copy, nonatomic) NSString *date;
 @property (copy, nonatomic) Stories *stories;
 @end

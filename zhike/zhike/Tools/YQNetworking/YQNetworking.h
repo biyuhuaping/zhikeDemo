@@ -7,51 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-/**
- *  网络状态
- */
-typedef NS_ENUM(NSInteger, YQNetworkStatus) {
-    /**
-     *  未知网络
-     */
-    YQNetworkStatusUnknown             = 1 << 0,
-    /**
-     *  无法连接
-     */
-    YQNetworkStatusNotReachable        = 1 << 1,
-    /**
-     *  WWAN网络
-     */
-    YQNetworkStatusReachableViaWWAN    = 1 << 2,
-    /**
-     *  WiFi网络
-     */
-    YQNetworkStatusReachableViaWiFi    = 1 << 3
-    
-    /**
-     *  未知网络
-     */
-//    YQNetworkStatusUnknown             = -1,
-//    /**
-//     *  无法连接
-//     */
-//    YQNetworkStatusNotReachable        = 0,
-//    /**
-//     *  3G、4G网络
-//     */
-//    YQNetworkStatusReachableViaWWAN    = 1,
-//    /**
-//     *  WiFi网络
-//     */
-//    YQNetworkStatusReachableViaWiFi    = 2
-    
-//    YQNetworkReachabilityStatusUnknown          = -1,//未知网络
-//    YQNetworkReachabilityStatusNotReachable     = 0,//无法连接
-//    YQNetworkReachabilityStatusReachableViaWWAN = 1,//3G、4G网络
-//    YQNetworkReachabilityStatusReachableViaWiFi = 2,//WiFi网络
-};
-
 /**
  *  请求任务
  */

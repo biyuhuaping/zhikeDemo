@@ -10,4 +10,17 @@
 
 @implementation User
 
+- (NSString *)requestUrl {
+    // “http://www.yuantiku.com” 在 YTKNetworkConfig 中设置，这里只填除去域名剩余的网址信息
+    return @"/api/4/news/latest";
+}
+
+- (YTKRequestMethod)requestMethod {
+    return YTKRequestMethodGET;
+}
+
+//- (id)requestArgument {
+//    return nil;
+//}
+
 @end

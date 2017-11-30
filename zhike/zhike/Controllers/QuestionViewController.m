@@ -7,6 +7,7 @@
 //
 
 #import "QuestionViewController.h"
+#import "HomeViewController.h"
 
 @interface QuestionViewController ()
 
@@ -24,6 +25,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    HomeViewController *home = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
+    [self.navigationController pushViewController:home animated:YES];
+}
 /*
 #pragma mark - Navigation
 

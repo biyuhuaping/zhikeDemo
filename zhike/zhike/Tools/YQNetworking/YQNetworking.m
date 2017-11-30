@@ -16,8 +16,8 @@
 
 static NSMutableArray   *requestTasksPool;
 static NSDictionary     *headers;
-static YQNetworkStatus  networkStatus;
 static NSTimeInterval   requestTimeout = 20.f;
+static AFNetworkReachabilityStatus networkReachabilityStatus;
 
 
 
@@ -27,7 +27,7 @@ static NSTimeInterval   requestTimeout = 20.f;
 - (BOOL)isTheSameRequest:(NSURLRequest *)request {
     if ([self.HTTPMethod isEqualToString:request.HTTPMethod]) {
         if ([self.URL.absoluteString isEqualToString:request.URL.absoluteString]) {
-            if ([self.HTTPMethod isEqualToString:@"GET"]||[self.HTTPBody isEqualToData:request.HTTPBody]) {
+            if ([self.HTTPMethod isEqualToString:@"GET"] || [self.HTTPBody isEqualToData:request.HTTPBody]) {
                 DBLOG(@"同一个请求还没执行完，又来请求☹️");
                 return YES;
             }
@@ -45,8 +45,15 @@ static NSTimeInterval   requestTimeout = 20.f;
 
 @implementation YQNetworking
 
-+ (void)initialize{
-    [self checkNetworkStatus];//开始监听网络
++ (void)load{
+    //开始监听网络
+    // 检测网络连接的单例,网络变化时的回调方法
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    [manager startMonitoring];
+    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        DBLOG(@"网络状态 : %@", @(status));
+        networkReachabilityStatus = status;
+    }];
 }
 
 + (instancetype)shaerdInstance{
@@ -58,37 +65,19 @@ static NSTimeInterval   requestTimeout = 20.f;
     return instance;
 }
 
-//- (AFHTTPSessionManager *)manager {
-//    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-//    //配置请求序列化
-//    AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer serializer];
-//    [serializer setRemovesKeysWithNullValues:YES];
-//
-//    _manager = [AFHTTPSessionManager manager];
-//    //默认解析模式
-//    _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-//    _manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    _manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
-//    _manager.requestSerializer.timeoutInterval = requestTimeout;
-//
-//    for (NSString *key in headers.allKeys) {
-//        if (headers[key] != nil) {
-//            [_manager.requestSerializer setValue:headers[key] forHTTPHeaderField:key];
-//        }
-//    }
-//
-//    //配置响应序列化
-//    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json", @"text/html", @"text/json", @"text/plain", @"text/javascript", @"text/xml", @"image/*", @"application/octet-stream", @"application/zip"]];
-//
-//    return _manager;
-//}
++ (NSMutableArray *)allTasks {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (requestTasksPool == nil) {
+            requestTasksPool = [NSMutableArray array];
+        }
+    });
+    return requestTasksPool;
+}
 
 #pragma mark - manager
 + (AFHTTPSessionManager *)manager {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    //配置请求序列化
-    AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer serializer];
-    [serializer setRemovesKeysWithNullValues:YES];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     //默认解析模式
@@ -96,6 +85,7 @@ static NSTimeInterval   requestTimeout = 20.f;
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
     manager.requestSerializer.timeoutInterval = requestTimeout;
+
     
     for (NSString *key in headers.allKeys) {
         if (headers[key] != nil) {
@@ -112,54 +102,21 @@ static NSTimeInterval   requestTimeout = 20.f;
     return manager;
 }
 
-//检查网络
-+ (void)checkNetworkStatus {
-    // 检测网络连接的单例,网络变化时的回调方法
-    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
-    [manager startMonitoring];
-    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        DBLOG(@"网络状态 : %@", @(status));
-        switch (status) {
-            case AFNetworkReachabilityStatusNotReachable:
-                networkStatus = YQNetworkStatusNotReachable;
-                break;
-            case AFNetworkReachabilityStatusReachableViaWWAN:
-                networkStatus = YQNetworkStatusReachableViaWWAN;
-                break;
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-                networkStatus = YQNetworkStatusReachableViaWiFi;
-                break;
-            default:
-                networkStatus = YQNetworkStatusUnknown;
-                break;
-        }
-    }];
-}
-
-+ (NSMutableArray *)allTasks {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        if (requestTasksPool == nil) {
-            requestTasksPool = [NSMutableArray array];
-        }
-    });
-    return requestTasksPool;
-}
-
 #pragma mark - get
 + (YQURLSessionTask *)getWithUrl:(NSString *)url refreshRequest:(BOOL)refresh cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(YQGetProgress)progressBlock successBlock:(YQResponseSuccessBlock)successBlock failBlock:(YQResponseFailBlock)failBlock {
     //将session拷贝到堆中，block内部才可以获取得到session
     __block YQURLSessionTask *session = nil;
     
-    AFHTTPSessionManager *manager = [self];
+    AFHTTPSessionManager *manager = [self manager];
     
     //网络验证
-    if (networkStatus == YQNetworkStatusNotReachable) {
+    if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         if (failBlock) {
             failBlock(YQ_ERROR);
         }
         return session;
     }
+    
     id responseObj = [[YQCacheManager shareManager] getCacheResponseObjectWithRequestUrl:url params:params];
     if (responseObj && cache) {
         if (successBlock) {
@@ -184,6 +141,7 @@ static NSTimeInterval   requestTimeout = 20.f;
         [[self allTasks] removeObject:session];
     }];
     
+    //判断重复请求
     if ([self haveSameRequestInTasksPool:session] && !refresh) {
         //取消新请求
         [session cancel];
@@ -202,7 +160,7 @@ static NSTimeInterval   requestTimeout = 20.f;
 + (YQURLSessionTask *)postWithUrl:(NSString *)url refreshRequest:(BOOL)refresh cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(YQPostProgress)progressBlock successBlock:(YQResponseSuccessBlock)successBlock failBlock:(YQResponseFailBlock)failBlock {
     __block YQURLSessionTask *session = nil;
     AFHTTPSessionManager *manager = [self manager];
-    if (networkStatus == YQNetworkStatusNotReachable) {
+    if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         if (failBlock) {
             failBlock(YQ_ERROR);
             return session;
@@ -250,7 +208,7 @@ static NSTimeInterval   requestTimeout = 20.f;
     
     AFHTTPSessionManager *manager = [self manager];
     
-    if (networkStatus == YQNetworkStatusNotReachable) {
+    if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         if (failBlock) failBlock(YQ_ERROR);
         return session;
     }
@@ -290,7 +248,7 @@ static NSTimeInterval   requestTimeout = 20.f;
                       successBlock:(YQMultUploadSuccessBlock)successBlock
                          failBlock:(YQMultUploadFailBlock)failBlock {
     
-    if (networkStatus == YQNetworkStatusNotReachable) {
+    if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         if (failBlock) failBlock(@[YQ_ERROR]);
         return nil;
     }
@@ -382,7 +340,7 @@ static NSTimeInterval   requestTimeout = 20.f;
         }
     }
     
-    AFHTTPSessionManager *manager = self.magnager;
+    AFHTTPSessionManager *manager = [self manager];
     //响应内容序列化为二进制
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     

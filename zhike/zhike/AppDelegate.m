@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "BaseTabBarController.h"
+#import <YTKNetwork.h>
 
 @interface AppDelegate ()
 @property (strong, nonatomic) BaseTabBarController *tabBarController;
@@ -23,6 +24,10 @@
     [self.window makeKeyAndVisible];
 
     [self showTabbarController];
+
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    config.baseUrl = @"https://news-at.zhihu.com";
+//    config.cdnUrl = @"http://fen.bi";
     
     return YES;
 }
