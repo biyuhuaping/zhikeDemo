@@ -63,4 +63,17 @@ typedef NS_ENUM(NSUInteger, HTTPMethod) {
  */
 - (nullable NSURLSessionDataTask *)sendPOSTRequestWithserverUrl:(nonnull NSString *)serverUrl apiPath:(nonnull NSString *)apiPath parameters:(nullable id)parameters imageArray:(NSArray *_Nullable)imageArray targetWidth:(CGFloat )width progress:(nullable void (^)(NSProgress * _Nullable progress))progress success:(nullable void(^) (BOOL isSuccess, id _Nullable responseObject))success failure:(nullable void(^) (NSString *_Nullable error))failure;
 
+
+
+#pragma mark - 常用网络请求
+/**
+ get请求
+  */
+- (void)GET:(NSString *_Nullable)URLString parameters:(NSDictionary *_Nullable)parameters success:(void (^_Nonnull)(id _Nullable  response))success failure:(void (^_Nonnull)(NSError * _Nullable error))failure;
+
+/**
+ post请求
+  */
+- (void)POST:(NSString *_Nullable)URLString parameters:(NSDictionary *_Nullable)parameters success:(void (^_Nonnull)(id _Nullable  response))success failure:(void (^_Nonnull)(NSError * _Nullable error))failure;
+
 @end
