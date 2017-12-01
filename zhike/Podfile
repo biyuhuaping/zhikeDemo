@@ -7,7 +7,6 @@ pod 'AFNetworking', '~> 3.0'
 pod 'MJExtension'
 pod 'YTKNetwork'
 
-pod 'YYCache'
 #pod 'YYModel', '~> 1.0.4'
 #pod 'MyLayout', '~> 1.5.0'
 #pod 'YTKKeyValueStore', '~> 0.1.2'

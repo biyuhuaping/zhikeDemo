@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BaseTabBarController.h"
 #import <YTKNetwork.h>
+#import "ZBUrlArgumentFilter.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) BaseTabBarController *tabBarController;
@@ -24,12 +25,18 @@
     [self.window makeKeyAndVisible];
 
     [self showTabbarController];
+    [self setupRequestFilters];
+    return YES;
+}
 
+- (void)setupRequestFilters {
+//    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     config.baseUrl = @"https://news-at.zhihu.com";
 //    config.cdnUrl = @"http://fen.bi";
     
-    return YES;
+//    ZBUrlArgumentFilter *urlFilter = [ZBUrlArgumentFilter filterWithArguments:@{@"version": appVersion}];
+//    [config addUrlFilter:urlFilter];
 }
 
 - (void)showTabbarController{

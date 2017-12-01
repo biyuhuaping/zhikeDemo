@@ -8,6 +8,7 @@
 
 #import "BaseTabBarController.h"
 #import "BaseNavigationController.h"
+#import "ZBTabBar.h"
 
 #import "HomeViewController.h"
 #import "QuestionViewController.h"
@@ -32,36 +33,61 @@
 }
 
 - (void)initTabbarItems {
-    NSArray *tabbarTitleArray = @[@"最新投资",
-                                  @"债权转让",
-                                  @"豆哥商城",
-                                  @"个人中心"];
-    NSArray *tabbarNormalArray = @[@"tabbar_icon_project_normal.png",
+    NSArray *imageArray = @[@"tabbar_icon_project_normal.png",
                                    @"tabbar_icon_transfer_normal.png",
                                    @"tabbar_icon_shop_normal.png",
                                    @"tabbar_icon_user_normal.png"];
-    NSArray *tabbarHighlightArray = @[@"tabbar_icon_project_highlight.png",
+    NSArray *selectedImageArray = @[@"tabbar_icon_project_highlight.png",
                                       @"tabbar_icon_transfer_highlight.png",
                                       @"tabbar_icon_shop_highlight.png",
                                       @"tabbar_icon_user_highlight.png"];
 
     HomeViewController *home = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
-    home.title = @"首页";
-    home.tabBarItem = [[UITabBarItem alloc] initWithTitle:tabbarTitleArray[0] image:[[UIImage imageNamed:tabbarNormalArray[0]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:tabbarHighlightArray[0]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    BaseNavigationController *nav0 = [[BaseNavigationController alloc]initWithRootViewController:home];
-
-    QuestionViewController *question = [[QuestionViewController alloc]initWithNibName:@"QuestionViewController" bundle:nil];
-    question.tabBarItem = [[UITabBarItem alloc] initWithTitle:tabbarTitleArray[1] image:[[UIImage imageNamed:tabbarNormalArray[1]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:tabbarHighlightArray[1]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    BaseNavigationController *nav1 = [[BaseNavigationController alloc]initWithRootViewController:question];
-
-    MineViewController *min = [[MineViewController alloc]initWithNibName:@"MineViewController" bundle:nil];
-    min.title = @"我的";
-    min.tabBarItem = [[UITabBarItem alloc] initWithTitle:tabbarTitleArray[2] image:[[UIImage imageNamed:tabbarNormalArray[2]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:tabbarHighlightArray[2]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    BaseNavigationController *nav2 = [[BaseNavigationController alloc]initWithRootViewController:min];
-    self.viewControllers = @[nav0,nav1,nav2];
+    [self addChildViewController:home title:@"首页" imageNamed:imageArray[0] selectedImageName:selectedImageArray[0]];
     
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blueColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor redColor], NSForegroundColorAttributeName,nil] forState:UIControlStateSelected];
+    
+//    QuestionViewController *question = [[QuestionViewController alloc]initWithNibName:@"QuestionViewController" bundle:nil];
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    view.backgroundColor = [UIColor redColor];
+//    [self addChildViewController:question title:@"第2" imageNamed:imageArray[1] selectedImageName:selectedImageArray[1]];
+    [self addCustomtabbar];
+
+    
+    MineViewController *min = [[MineViewController alloc]initWithNibName:@"MineViewController" bundle:nil];
+    [self addChildViewController:min title:@"我的" imageNamed:imageArray[2] selectedImageName:selectedImageArray[2]];
+
+    
+    //统一设置（选中/未选中）文字颜色
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] } forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor redColor] } forState:UIControlStateSelected];
+}
+
+// 添加某个 childViewController
+- (void)addChildViewController:(UIViewController *)vc title:(NSString *)title imageNamed:(NSString *)imageNamed selectedImageName:(NSString*)selectedImageName {
+    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+    // 如果同时有navigationbar 和 tabbar的时候最好分别设置它们的title
+    vc.navigationItem.title = title;
+    nav.tabBarItem.title = title;
+    
+    nav.tabBarItem.image = [[UIImage imageNamed:imageNamed] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nav.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    // 单独设置选中tabbar文字颜色
+//    [vc.tabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor darkGrayColor] } forState:UIControlStateSelected];
+    
+    [self addChildViewController:nav];
+}
+
+- (void)addCustomtabbar{
+    ZBTabBar *tabbar = [[ZBTabBar alloc]init];
+    [self setValue:tabbar forKeyPath:@"tabBar"];
+    [tabbar.centerTabBar addTarget:self action:@selector(centerTabBarClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)centerTabBarClick:(UIButton *)btn{
+    NSLog(@"点击了中间");
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"点击了中间按钮" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 #pragma mark - UITabBarControllerDelegate

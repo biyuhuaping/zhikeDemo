@@ -30,7 +30,8 @@
 		C73921871FCFACDD004891E6 /* YQMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921861FCFACDD004891E6 /* YQMemoryCache.m */; };
 		C739218A1FCFE5E9004891E6 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921891FCFE5E9004891E6 /* RegisterModel.m */; };
 		C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */; };
-		C73921901FD00222004891E6 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C739218F1FD00222004891E6 /* NetWorkManager.m */; };
+		C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */; };
+		C73921971FD15482004891E6 /* ZBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921961FD15482004891E6 /* ZBTabBar.m */; };
 		E4D351EFFCD44DD600E7F4A4 /* libPods-zhike.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 871304D3C206358966AD6A85 /* libPods-zhike.a */; };
 /* End PBXBuildFile section */
 
@@ -99,8 +100,10 @@
 		C73921891FCFE5E9004891E6 /* RegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
 		C739218B1FCFFD0A004891E6 /* ZBNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBNetworkManager.h; sourceTree = "<group>"; };
 		C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBNetworkManager.m; sourceTree = "<group>"; };
-		C739218E1FD00222004891E6 /* NetWorkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWorkManager.h; sourceTree = "<group>"; };
-		C739218F1FD00222004891E6 /* NetWorkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetWorkManager.m; sourceTree = "<group>"; };
+		C73921921FD104A4004891E6 /* ZBUrlArgumentFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBUrlArgumentFilter.h; sourceTree = "<group>"; };
+		C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBUrlArgumentFilter.m; sourceTree = "<group>"; };
+		C73921951FD15482004891E6 /* ZBTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBTabBar.h; sourceTree = "<group>"; };
+		C73921961FD15482004891E6 /* ZBTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBTabBar.m; sourceTree = "<group>"; };
 		E6BCB10C52F102CFCA4D8FA3 /* Pods-zhike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhike.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhike/Pods-zhike.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +181,8 @@
 				C73921341FC7FBA2004891E6 /* BaseNavigationController.m */,
 				C73921361FC7FBD5004891E6 /* BaseTabBarController.h */,
 				C73921371FC7FBD5004891E6 /* BaseTabBarController.m */,
+				C73921951FD15482004891E6 /* ZBTabBar.h */,
+				C73921961FD15482004891E6 /* ZBTabBar.m */,
 				C739210A1FC7F98A004891E6 /* Assets.xcassets */,
 				C739210C1FC7F98A004891E6 /* LaunchScreen.storyboard */,
 				C739217B1FCE43A0004891E6 /* PrefixHeader.pch */,
@@ -231,13 +236,12 @@
 		C73921611FCCFCBF004891E6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C73921911FD10396004891E6 /* NetworkManager */,
 				C73921631FCD1765004891E6 /* YQNetworking */,
 				C739217F1FCF8C52004891E6 /* ZBNetwork.h */,
 				C73921801FCF8C52004891E6 /* ZBNetwork.m */,
 				C739218B1FCFFD0A004891E6 /* ZBNetworkManager.h */,
 				C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */,
-				C739218E1FD00222004891E6 /* NetWorkManager.h */,
-				C739218F1FD00222004891E6 /* NetWorkManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -272,6 +276,15 @@
 				C73921861FCFACDD004891E6 /* YQMemoryCache.m */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		C73921911FD10396004891E6 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				C73921921FD104A4004891E6 /* ZBUrlArgumentFilter.h */,
+				C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,7 +477,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C73921381FC7FBD5004891E6 /* BaseTabBarController.m in Sources */,
-				C73921901FD00222004891E6 /* NetWorkManager.m in Sources */,
 				C73921721FCD1765004891E6 /* YQLRUManager.m in Sources */,
 				C73921561FC7FD62004891E6 /* MineViewController.m in Sources */,
 				C73921731FCD1765004891E6 /* YQDiskCache.m in Sources */,
@@ -475,8 +487,10 @@
 				C73921751FCD1765004891E6 /* YQCacheManager.m in Sources */,
 				C739218A1FCFE5E9004891E6 /* RegisterModel.m in Sources */,
 				C73921871FCFACDD004891E6 /* YQMemoryCache.m in Sources */,
+				C73921971FD15482004891E6 /* ZBTabBar.m in Sources */,
 				C73921031FC7F98A004891E6 /* AppDelegate.m in Sources */,
 				C73921771FCD1765004891E6 /* YQNetworking.m in Sources */,
+				C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */,
 				C739214C1FC7FD43004891E6 /* HomeViewController.m in Sources */,
 				C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */,
 				C73921351FC7FBA2004891E6 /* BaseNavigationController.m in Sources */,

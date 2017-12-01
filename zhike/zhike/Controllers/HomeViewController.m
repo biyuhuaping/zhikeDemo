@@ -79,24 +79,31 @@
 //    RegisterModel *api = [[RegisterModel alloc] initWithUsername:@"usernamebiyuhuaping" password:@"123456"];
 //    [api startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
 //        // 你可以直接在这里使用 self
-//        NSLog(@"succeed");
+//        DBLOG(@"%@",[request responseJSONObject]);
 //
 //    } failure:^(YTKBaseRequest *request) {
 //        // 你可以直接在这里使用 self
 //        NSLog(@"failed");
 //    }];
-    User * user = [[User alloc]init];
-    [user startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        DBLOG(@"%@",request);
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        DBLOG(@"请求失败：%@",request);
-    }];
+    dispatch_queue_t queue = dispatch_queue_create("com.zhoubo.zhike", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        __block User *user = [[User alloc]init];
+        [user startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+            id response = [request responseJSONObject];
+            [NSThread sleepForTimeInterval:5];
+            DBLOG(@"%@",response);
+            user = [User mj_objectWithKeyValues:response];
+            DBLOG(@"%@,%@",user.stories[0][@"title"],user.stories[0][@"id"]);
+        } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+            DBLOG(@"请求失败：%@",request);
+        }];
+    });
 }
 
 
 
 
 - (void)dealloc{
-    
+    DBLOG(@"dealloc");
 }
 @end
