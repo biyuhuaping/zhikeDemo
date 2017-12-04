@@ -25,6 +25,7 @@
     
     //初始化viewControllers
     [self initTabbarItems];
+    self.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,14 +34,8 @@
 }
 
 - (void)initTabbarItems {
-    NSArray *imageArray = @[@"tabbar_icon_project_normal.png",
-                                   @"tabbar_icon_transfer_normal.png",
-                                   @"tabbar_icon_shop_normal.png",
-                                   @"tabbar_icon_user_normal.png"];
-    NSArray *selectedImageArray = @[@"tabbar_icon_project_highlight.png",
-                                      @"tabbar_icon_transfer_highlight.png",
-                                      @"tabbar_icon_shop_highlight.png",
-                                      @"tabbar_icon_user_highlight.png"];
+    NSArray *imageArray = @[@"tabbar_icon_project_normal.png", @"tabbar_icon_transfer_normal.png", @"tabbar_icon_shop_normal.png", @"tabbar_icon_user_normal.png"];
+    NSArray *selectedImageArray = @[@"tabbar_icon_project_highlight.png", @"tabbar_icon_transfer_highlight.png", @"tabbar_icon_shop_highlight.png", @"tabbar_icon_user_highlight.png"];
 
     HomeViewController *home = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
     [self addChildViewController:home title:@"首页" imageNamed:imageArray[0] selectedImageName:selectedImageArray[0]];
@@ -86,8 +81,12 @@
 
 - (void)centerTabBarClick:(UIButton *)btn{
     NSLog(@"点击了中间");
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"点击了中间按钮" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"点击了中间按钮" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//    [alert show];
+    QuestionViewController *question = [[QuestionViewController alloc]initWithNibName:@"QuestionViewController" bundle:nil];
+    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:question];
+    question.title = @"问吧";
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - UITabBarControllerDelegate

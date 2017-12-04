@@ -90,7 +90,7 @@
         __block User *user = [[User alloc]init];
         [user startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             id response = [request responseJSONObject];
-            [NSThread sleepForTimeInterval:5];
+//            [NSThread sleepForTimeInterval:5];
             DBLOG(@"%@",response);
             user = [User mj_objectWithKeyValues:response];
             DBLOG(@"%@,%@",user.stories[0][@"title"],user.stories[0][@"id"]);
