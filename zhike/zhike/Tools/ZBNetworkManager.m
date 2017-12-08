@@ -266,10 +266,10 @@ static ZBNetworkManager *networkManager = nil;
  @return description
  */
 - (NSString *)failHandleWithErrorResponse:( NSError * _Nullable )error task:( NSURLSessionDataTask * _Nullable )task {
-    __block NSString *message = nil;
     // 这里可以直接设定错误反馈，也可以利用AFN 的error信息直接解析展示
     NSData *afNetworking_errorMsg = [error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey];
     DBLOG(@"afNetworking_errorMsg == %@",[[NSString alloc]initWithData:afNetworking_errorMsg encoding:NSUTF8StringEncoding]);
+    __block NSString *message = nil;
     if (!afNetworking_errorMsg) {
         message = @"网络连接失败";
     }

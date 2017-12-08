@@ -21,17 +21,16 @@
 		C73921521FC7FD56004891E6 /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73921501FC7FD56004891E6 /* QuestionViewController.xib */; };
 		C73921561FC7FD62004891E6 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921541FC7FD62004891E6 /* MineViewController.m */; };
 		C73921571FC7FD62004891E6 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C73921551FC7FD62004891E6 /* MineViewController.xib */; };
-		C73921721FCD1765004891E6 /* YQLRUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921661FCD1765004891E6 /* YQLRUManager.m */; };
-		C73921731FCD1765004891E6 /* YQDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921671FCD1765004891E6 /* YQDiskCache.m */; };
-		C73921751FCD1765004891E6 /* YQCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C739216C1FCD1765004891E6 /* YQCacheManager.m */; };
-		C73921771FCD1765004891E6 /* YQNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921711FCD1765004891E6 /* YQNetworking.m */; };
 		C739217A1FCD3515004891E6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921791FCD3515004891E6 /* User.m */; };
-		C73921811FCF8C52004891E6 /* ZBNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921801FCF8C52004891E6 /* ZBNetwork.m */; };
-		C73921871FCFACDD004891E6 /* YQMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921861FCFACDD004891E6 /* YQMemoryCache.m */; };
 		C739218A1FCFE5E9004891E6 /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921891FCFE5E9004891E6 /* RegisterModel.m */; };
 		C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */; };
 		C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */; };
 		C73921971FD15482004891E6 /* ZBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921961FD15482004891E6 /* ZBTabBar.m */; };
+		C7B673D21FD63EB700C2CA0E /* ZBMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673C81FD63EB600C2CA0E /* ZBMemoryCache.m */; };
+		C7B673D31FD63EB700C2CA0E /* ZBDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CA1FD63EB600C2CA0E /* ZBDiskCache.m */; };
+		C7B673D41FD63EB700C2CA0E /* ZBCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CB1FD63EB600C2CA0E /* ZBCacheManager.m */; };
+		C7B673D51FD63EB700C2CA0E /* ZBLRUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CE1FD63EB600C2CA0E /* ZBLRUManager.m */; };
+		C7B673D61FD63EB700C2CA0E /* ZBNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673D01FD63EB600C2CA0E /* ZBNetworking.m */; };
 		E4D351EFFCD44DD600E7F4A4 /* libPods-zhike.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 871304D3C206358966AD6A85 /* libPods-zhike.a */; };
 /* End PBXBuildFile section */
 
@@ -81,21 +80,9 @@
 		C73921531FC7FD62004891E6 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		C73921541FC7FD62004891E6 /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		C73921551FC7FD62004891E6 /* MineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
-		C73921641FCD1765004891E6 /* YQNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQNetworking.h; sourceTree = "<group>"; };
-		C73921661FCD1765004891E6 /* YQLRUManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQLRUManager.m; sourceTree = "<group>"; };
-		C73921671FCD1765004891E6 /* YQDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQDiskCache.m; sourceTree = "<group>"; };
-		C73921691FCD1765004891E6 /* YQCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQCacheManager.h; sourceTree = "<group>"; };
-		C739216A1FCD1765004891E6 /* YQDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQDiskCache.h; sourceTree = "<group>"; };
-		C739216B1FCD1765004891E6 /* YQLRUManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQLRUManager.h; sourceTree = "<group>"; };
-		C739216C1FCD1765004891E6 /* YQCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQCacheManager.m; sourceTree = "<group>"; };
-		C73921711FCD1765004891E6 /* YQNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQNetworking.m; sourceTree = "<group>"; };
 		C73921781FCD3515004891E6 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		C73921791FCD3515004891E6 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C739217B1FCE43A0004891E6 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		C739217F1FCF8C52004891E6 /* ZBNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBNetwork.h; sourceTree = "<group>"; };
-		C73921801FCF8C52004891E6 /* ZBNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBNetwork.m; sourceTree = "<group>"; };
-		C73921851FCFACDD004891E6 /* YQMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQMemoryCache.h; sourceTree = "<group>"; };
-		C73921861FCFACDD004891E6 /* YQMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQMemoryCache.m; sourceTree = "<group>"; };
 		C73921881FCFE5E9004891E6 /* RegisterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterModel.h; sourceTree = "<group>"; };
 		C73921891FCFE5E9004891E6 /* RegisterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterModel.m; sourceTree = "<group>"; };
 		C739218B1FCFFD0A004891E6 /* ZBNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBNetworkManager.h; sourceTree = "<group>"; };
@@ -104,6 +91,16 @@
 		C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBUrlArgumentFilter.m; sourceTree = "<group>"; };
 		C73921951FD15482004891E6 /* ZBTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBTabBar.h; sourceTree = "<group>"; };
 		C73921961FD15482004891E6 /* ZBTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBTabBar.m; sourceTree = "<group>"; };
+		C7B673C81FD63EB600C2CA0E /* ZBMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBMemoryCache.m; sourceTree = "<group>"; };
+		C7B673C91FD63EB600C2CA0E /* ZBLRUManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBLRUManager.h; sourceTree = "<group>"; };
+		C7B673CA1FD63EB600C2CA0E /* ZBDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBDiskCache.m; sourceTree = "<group>"; };
+		C7B673CB1FD63EB600C2CA0E /* ZBCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBCacheManager.m; sourceTree = "<group>"; };
+		C7B673CC1FD63EB600C2CA0E /* ZBMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBMemoryCache.h; sourceTree = "<group>"; };
+		C7B673CD1FD63EB600C2CA0E /* ZBDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBDiskCache.h; sourceTree = "<group>"; };
+		C7B673CE1FD63EB600C2CA0E /* ZBLRUManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBLRUManager.m; sourceTree = "<group>"; };
+		C7B673CF1FD63EB600C2CA0E /* ZBCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBCacheManager.h; sourceTree = "<group>"; };
+		C7B673D01FD63EB600C2CA0E /* ZBNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBNetworking.m; sourceTree = "<group>"; };
+		C7B673D11FD63EB600C2CA0E /* ZBNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBNetworking.h; sourceTree = "<group>"; };
 		E6BCB10C52F102CFCA4D8FA3 /* Pods-zhike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhike.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhike/Pods-zhike.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,10 +233,8 @@
 		C73921611FCCFCBF004891E6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C7B673C61FD63EB600C2CA0E /* ZBNetworking */,
 				C73921911FD10396004891E6 /* NetworkManager */,
-				C73921631FCD1765004891E6 /* YQNetworking */,
-				C739217F1FCF8C52004891E6 /* ZBNetwork.h */,
-				C73921801FCF8C52004891E6 /* ZBNetwork.m */,
 				C739218B1FCFFD0A004891E6 /* ZBNetworkManager.h */,
 				C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */,
 			);
@@ -253,31 +248,6 @@
 			path = ThirdLib;
 			sourceTree = "<group>";
 		};
-		C73921631FCD1765004891E6 /* YQNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				C73921641FCD1765004891E6 /* YQNetworking.h */,
-				C73921711FCD1765004891E6 /* YQNetworking.m */,
-				C73921651FCD1765004891E6 /* Cache */,
-			);
-			path = YQNetworking;
-			sourceTree = "<group>";
-		};
-		C73921651FCD1765004891E6 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				C739216B1FCD1765004891E6 /* YQLRUManager.h */,
-				C73921661FCD1765004891E6 /* YQLRUManager.m */,
-				C739216A1FCD1765004891E6 /* YQDiskCache.h */,
-				C73921671FCD1765004891E6 /* YQDiskCache.m */,
-				C73921691FCD1765004891E6 /* YQCacheManager.h */,
-				C739216C1FCD1765004891E6 /* YQCacheManager.m */,
-				C73921851FCFACDD004891E6 /* YQMemoryCache.h */,
-				C73921861FCFACDD004891E6 /* YQMemoryCache.m */,
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
 		C73921911FD10396004891E6 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +255,31 @@
 				C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		C7B673C61FD63EB600C2CA0E /* ZBNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				C7B673D11FD63EB600C2CA0E /* ZBNetworking.h */,
+				C7B673D01FD63EB600C2CA0E /* ZBNetworking.m */,
+				C7B673C71FD63EB600C2CA0E /* Cache */,
+			);
+			path = ZBNetworking;
+			sourceTree = "<group>";
+		};
+		C7B673C71FD63EB600C2CA0E /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				C7B673CC1FD63EB600C2CA0E /* ZBMemoryCache.h */,
+				C7B673C81FD63EB600C2CA0E /* ZBMemoryCache.m */,
+				C7B673C91FD63EB600C2CA0E /* ZBLRUManager.h */,
+				C7B673CE1FD63EB600C2CA0E /* ZBLRUManager.m */,
+				C7B673CF1FD63EB600C2CA0E /* ZBCacheManager.h */,
+				C7B673CB1FD63EB600C2CA0E /* ZBCacheManager.m */,
+				C7B673CD1FD63EB600C2CA0E /* ZBDiskCache.h */,
+				C7B673CA1FD63EB600C2CA0E /* ZBDiskCache.m */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,20 +472,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C73921381FC7FBD5004891E6 /* BaseTabBarController.m in Sources */,
-				C73921721FCD1765004891E6 /* YQLRUManager.m in Sources */,
 				C73921561FC7FD62004891E6 /* MineViewController.m in Sources */,
-				C73921731FCD1765004891E6 /* YQDiskCache.m in Sources */,
 				C73921111FC7F98A004891E6 /* main.m in Sources */,
+				C7B673D51FD63EB700C2CA0E /* ZBLRUManager.m in Sources */,
+				C7B673D21FD63EB700C2CA0E /* ZBMemoryCache.m in Sources */,
 				C73921511FC7FD56004891E6 /* QuestionViewController.m in Sources */,
 				C739217A1FCD3515004891E6 /* User.m in Sources */,
-				C73921811FCF8C52004891E6 /* ZBNetwork.m in Sources */,
-				C73921751FCD1765004891E6 /* YQCacheManager.m in Sources */,
 				C739218A1FCFE5E9004891E6 /* RegisterModel.m in Sources */,
-				C73921871FCFACDD004891E6 /* YQMemoryCache.m in Sources */,
 				C73921971FD15482004891E6 /* ZBTabBar.m in Sources */,
 				C73921031FC7F98A004891E6 /* AppDelegate.m in Sources */,
-				C73921771FCD1765004891E6 /* YQNetworking.m in Sources */,
+				C7B673D31FD63EB700C2CA0E /* ZBDiskCache.m in Sources */,
+				C7B673D61FD63EB700C2CA0E /* ZBNetworking.m in Sources */,
 				C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */,
+				C7B673D41FD63EB700C2CA0E /* ZBCacheManager.m in Sources */,
 				C739214C1FC7FD43004891E6 /* HomeViewController.m in Sources */,
 				C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */,
 				C73921351FC7FBA2004891E6 /* BaseNavigationController.m in Sources */,
@@ -588,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -637,7 +631,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -650,6 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BNV27HH5PK;
 				GCC_PREFIX_HEADER = zhike/PrefixHeader.pch;
 				INFOPLIST_FILE = zhike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -667,6 +662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BNV27HH5PK;
 				GCC_PREFIX_HEADER = zhike/PrefixHeader.pch;
 				INFOPLIST_FILE = zhike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
