@@ -419,7 +419,7 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
     }else if ([responseObject isKindOfClass:[NSDictionary class]]){
         data = [NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:&error];
     }
-    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+//    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
 //    NSLog(@"%@",json);
     
     //统一判断所有请求返回状态，例如：强制更新为6，若为6就返回YES，

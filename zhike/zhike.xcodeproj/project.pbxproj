@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C70E7B3B1FE266EB00DCCBB9 /* NoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C70E7B391FE266EB00DCCBB9 /* NoneCell.m */; };
+		C70E7B3C1FE266EB00DCCBB9 /* NoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70E7B3A1FE266EB00DCCBB9 /* NoneCell.xib */; };
 		C73921031FC7F98A004891E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921021FC7F98A004891E6 /* AppDelegate.m */; };
 		C739210B1FC7F98A004891E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C739210A1FC7F98A004891E6 /* Assets.xcassets */; };
 		C739210E1FC7F98A004891E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C739210C1FC7F98A004891E6 /* LaunchScreen.storyboard */; };
@@ -26,6 +28,8 @@
 		C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */; };
 		C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */; };
 		C73921971FD15482004891E6 /* ZBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921961FD15482004891E6 /* ZBTabBar.m */; };
+		C77C9FF41FDF66EB003210F3 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C77C9FF21FDF66EB003210F3 /* SearchViewController.m */; };
+		C77C9FF51FDF66EB003210F3 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77C9FF31FDF66EB003210F3 /* SearchViewController.xib */; };
 		C7B673D21FD63EB700C2CA0E /* ZBMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673C81FD63EB600C2CA0E /* ZBMemoryCache.m */; };
 		C7B673D31FD63EB700C2CA0E /* ZBDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CA1FD63EB600C2CA0E /* ZBDiskCache.m */; };
 		C7B673D41FD63EB700C2CA0E /* ZBCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CB1FD63EB600C2CA0E /* ZBCacheManager.m */; };
@@ -54,6 +58,9 @@
 /* Begin PBXFileReference section */
 		871304D3C206358966AD6A85 /* libPods-zhike.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zhike.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8918B24BB3E171BD9FBD7726 /* Pods-zhike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zhike/Pods-zhike.debug.xcconfig"; sourceTree = "<group>"; };
+		C70E7B381FE266EB00DCCBB9 /* NoneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoneCell.h; sourceTree = "<group>"; };
+		C70E7B391FE266EB00DCCBB9 /* NoneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoneCell.m; sourceTree = "<group>"; };
+		C70E7B3A1FE266EB00DCCBB9 /* NoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoneCell.xib; sourceTree = "<group>"; };
 		C73920FE1FC7F98A004891E6 /* zhike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zhike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73921011FC7F98A004891E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C73921021FC7F98A004891E6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,6 +98,9 @@
 		C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBUrlArgumentFilter.m; sourceTree = "<group>"; };
 		C73921951FD15482004891E6 /* ZBTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBTabBar.h; sourceTree = "<group>"; };
 		C73921961FD15482004891E6 /* ZBTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBTabBar.m; sourceTree = "<group>"; };
+		C77C9FF11FDF66EB003210F3 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		C77C9FF21FDF66EB003210F3 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		C77C9FF31FDF66EB003210F3 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		C7B673C81FD63EB600C2CA0E /* ZBMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBMemoryCache.m; sourceTree = "<group>"; };
 		C7B673C91FD63EB600C2CA0E /* ZBLRUManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBLRUManager.h; sourceTree = "<group>"; };
 		C7B673CA1FD63EB600C2CA0E /* ZBDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBDiskCache.m; sourceTree = "<group>"; };
@@ -217,15 +227,9 @@
 				C73921791FCD3515004891E6 /* User.m */,
 				C73921881FCFE5E9004891E6 /* RegisterModel.h */,
 				C73921891FCFE5E9004891E6 /* RegisterModel.m */,
-				C73921491FC7FD43004891E6 /* HomeViewController.h */,
-				C739214A1FC7FD43004891E6 /* HomeViewController.m */,
-				C739214B1FC7FD43004891E6 /* HomeViewController.xib */,
-				C739214E1FC7FD56004891E6 /* QuestionViewController.h */,
-				C739214F1FC7FD56004891E6 /* QuestionViewController.m */,
-				C73921501FC7FD56004891E6 /* QuestionViewController.xib */,
-				C73921531FC7FD62004891E6 /* MineViewController.h */,
-				C73921541FC7FD62004891E6 /* MineViewController.m */,
-				C73921551FC7FD62004891E6 /* MineViewController.xib */,
+				C77C9FD81FDE1E63003210F3 /* home */,
+				C77C9FDA1FDE1EA3003210F3 /* question */,
+				C77C9FD91FDE1E86003210F3 /* mine */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +259,42 @@
 				C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		C77C9FD81FDE1E63003210F3 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				C73921491FC7FD43004891E6 /* HomeViewController.h */,
+				C739214A1FC7FD43004891E6 /* HomeViewController.m */,
+				C739214B1FC7FD43004891E6 /* HomeViewController.xib */,
+				C70E7B381FE266EB00DCCBB9 /* NoneCell.h */,
+				C70E7B391FE266EB00DCCBB9 /* NoneCell.m */,
+				C70E7B3A1FE266EB00DCCBB9 /* NoneCell.xib */,
+				C77C9FF11FDF66EB003210F3 /* SearchViewController.h */,
+				C77C9FF21FDF66EB003210F3 /* SearchViewController.m */,
+				C77C9FF31FDF66EB003210F3 /* SearchViewController.xib */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		C77C9FD91FDE1E86003210F3 /* mine */ = {
+			isa = PBXGroup;
+			children = (
+				C73921531FC7FD62004891E6 /* MineViewController.h */,
+				C73921541FC7FD62004891E6 /* MineViewController.m */,
+				C73921551FC7FD62004891E6 /* MineViewController.xib */,
+			);
+			path = mine;
+			sourceTree = "<group>";
+		};
+		C77C9FDA1FDE1EA3003210F3 /* question */ = {
+			isa = PBXGroup;
+			children = (
+				C739214E1FC7FD56004891E6 /* QuestionViewController.h */,
+				C739214F1FC7FD56004891E6 /* QuestionViewController.m */,
+				C73921501FC7FD56004891E6 /* QuestionViewController.xib */,
+			);
+			path = question;
 			sourceTree = "<group>";
 		};
 		C7B673C61FD63EB600C2CA0E /* ZBNetworking */ = {
@@ -393,6 +433,8 @@
 			files = (
 				C73921571FC7FD62004891E6 /* MineViewController.xib in Resources */,
 				C739210E1FC7F98A004891E6 /* LaunchScreen.storyboard in Resources */,
+				C77C9FF51FDF66EB003210F3 /* SearchViewController.xib in Resources */,
+				C70E7B3C1FE266EB00DCCBB9 /* NoneCell.xib in Resources */,
 				C739210B1FC7F98A004891E6 /* Assets.xcassets in Resources */,
 				C73921521FC7FD56004891E6 /* QuestionViewController.xib in Resources */,
 				C739214D1FC7FD43004891E6 /* HomeViewController.xib in Resources */,
@@ -475,12 +517,14 @@
 				C73921561FC7FD62004891E6 /* MineViewController.m in Sources */,
 				C73921111FC7F98A004891E6 /* main.m in Sources */,
 				C7B673D51FD63EB700C2CA0E /* ZBLRUManager.m in Sources */,
+				C77C9FF41FDF66EB003210F3 /* SearchViewController.m in Sources */,
 				C7B673D21FD63EB700C2CA0E /* ZBMemoryCache.m in Sources */,
 				C73921511FC7FD56004891E6 /* QuestionViewController.m in Sources */,
 				C739217A1FCD3515004891E6 /* User.m in Sources */,
 				C739218A1FCFE5E9004891E6 /* RegisterModel.m in Sources */,
 				C73921971FD15482004891E6 /* ZBTabBar.m in Sources */,
 				C73921031FC7F98A004891E6 /* AppDelegate.m in Sources */,
+				C70E7B3B1FE266EB00DCCBB9 /* NoneCell.m in Sources */,
 				C7B673D31FD63EB700C2CA0E /* ZBDiskCache.m in Sources */,
 				C7B673D61FD63EB700C2CA0E /* ZBNetworking.m in Sources */,
 				C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */,
