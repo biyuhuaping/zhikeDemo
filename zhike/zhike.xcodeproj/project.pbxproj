@@ -277,8 +277,7 @@
 				C73921911FD10396004891E6 /* NetworkManager */,
 				C739218B1FCFFD0A004891E6 /* ZBNetworkManager.h */,
 				C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */,
-				C7AD9B201FE909C900C1E6D5 /* CatchCrash.h */,
-				C7AD9B211FE909C900C1E6D5 /* CatchCrash.m */,
+				C79971381FEA095F005D0B4D /* CatchCrash */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -326,6 +325,15 @@
 				C73921501FC7FD56004891E6 /* QuestionViewController.xib */,
 			);
 			path = question;
+			sourceTree = "<group>";
+		};
+		C79971381FEA095F005D0B4D /* CatchCrash */ = {
+			isa = PBXGroup;
+			children = (
+				C7AD9B201FE909C900C1E6D5 /* CatchCrash.h */,
+				C7AD9B211FE909C900C1E6D5 /* CatchCrash.m */,
+			);
+			path = CatchCrash;
 			sourceTree = "<group>";
 		};
 		C7B673C61FD63EB600C2CA0E /* ZBNetworking */ = {

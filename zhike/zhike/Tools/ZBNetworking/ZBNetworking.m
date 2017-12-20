@@ -182,31 +182,15 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
 }
 
 #pragma mark 文件上传
-- (ZBURLSessionTask *)uploadFileWithUrl:(NSString *)url
-                               fileData:(NSData *)data
-                                   type:(NSString *)type
-                                   name:(NSString *)name
-                               mimeType:(NSString *)mimeType
-                          progressBlock:(ZBUploadProgressBlock)progressBlock
-                           successBlock:(ZBResponseSuccessBlock)successBlock
-                              failBlock:(ZBResponseFailBlock)failBlock {
+- (ZBURLSessionTask *)uploadFileWithUrl:(NSString *)url fileData:(NSData *)data name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
     __block ZBURLSessionTask *session = nil;
-    
     AFHTTPSessionManager *manager = [self manager];
-    
     if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         if (failBlock) failBlock(ZB_ERROR);
         return session;
     }
     
     session = [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        NSString *fileName = nil;
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"yyyyMMddHHmmss";
-        
-        NSString *day = [formatter stringFromDate:[NSDate date]];
-        fileName = [NSString stringWithFormat:@"%@.%@",day,type];
         [formData appendPartWithFileData:data name:name fileName:fileName mimeType:mimeType];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         if (progressBlock) progressBlock (uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
@@ -225,14 +209,7 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
 }
 
 #pragma mark 多文件上传
-- (NSArray *)uploadMultFileWithUrl:(NSString *)url
-                         fileDatas:(NSArray *)datas
-                              type:(NSString *)type
-                              name:(NSString *)name
-                          mimeType:(NSString *)mimeTypes
-                     progressBlock:(ZBUploadProgressBlock)progressBlock
-                      successBlock:(ZBMultUploadSuccessBlock)successBlock
-                         failBlock:(ZBMultUploadFailBlock)failBlock {
+- (NSArray *)uploadMultFileWithUrl:(NSString *)url fileDatas:(NSArray *)datas name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeTypes progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBMultUploadSuccessBlock)successBlock failBlock:(ZBMultUploadFailBlock)failBlock {
     
     if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         if (failBlock) failBlock(@[ZB_ERROR]);
@@ -249,7 +226,7 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
     for (int i = 0; i < count; i++) {
         __block ZBURLSessionTask *session = nil;
         dispatch_group_enter(uploadGroup);
-        session = [self uploadFileWithUrl:url fileData:datas[i] type:type name:name mimeType:mimeTypes progressBlock:^(int64_t bytesWritten, int64_t totalBytes) {
+        session = [self uploadFileWithUrl:url fileData:datas[i] name:name fileName:fileName mimeType:mimeTypes progressBlock:^(int64_t bytesWritten, int64_t totalBytes) {
             if (progressBlock) progressBlock(bytesWritten, totalBytes);
         } successBlock:^(id response) {
             [responses addObject:response];
@@ -375,7 +352,6 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
 }
 
 #pragma mark - other method
-
 - (void)cancleAllRequest {
     @synchronized (self) {
         [requestTasksPool enumerateObjectsUsingBlock:^(ZBURLSessionTask  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

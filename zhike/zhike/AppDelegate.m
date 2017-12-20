@@ -58,10 +58,10 @@
     NSLog(@"我来了！");
 }
 
-#pragma mark -- 发送崩溃日志
+#pragma mark - 发送崩溃日志
 - (void)sendExceptionLogWithData:(NSData *)data{
     NSString *url = @"";
-    [[ZBNetworking shaerdInstance]uploadFileWithUrl:url fileData:data type:@"log" name:@"error" mimeType:@"log" progressBlock:nil successBlock:^(id response) {
+    [[ZBNetworking shaerdInstance]uploadFileWithUrl:url fileData:data name:@"file" fileName:@"error.log" mimeType:@"txt" progressBlock:nil successBlock:^(id response) {
         DBLOG(@"日志上传成功");
     } failBlock:^(NSError *error) {
         DBLOG(@"日志上传失败");
@@ -75,6 +75,8 @@
 //
 //    [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 //        [formData appendPartWithFileData:data name:@"file" fileName:@"Exception.txt" mimeType:@"txt"];
+    //    [formData appendPartWithFileData:data name:name fileName:fileName mimeType:mimeType];
+
 //    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
 //
 //    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
@@ -103,6 +105,7 @@
 //    DDLogVerbose(@"[Verbose]:%@", @"输出详细信息");//输出详细信息
 //}
 
+#pragma mark -
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
