@@ -141,7 +141,7 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
 }
 
 #pragma mark post
-- (ZBURLSessionTask *)postWithUrl:(NSString *)url refreshRequest:(BOOL)refresh cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
+- (ZBURLSessionTask *)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
     __block ZBURLSessionTask *session = nil;
     AFHTTPSessionManager *manager = [self manager];
     if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {

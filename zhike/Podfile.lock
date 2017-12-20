@@ -20,6 +20,8 @@ PODS:
   - MJExtension (3.0.13)
   - MLeaksFinder (0.2.1):
     - FBRetainCycleDetector
+  - SDCycleScrollView (1.75):
+    - SDWebImage (>= 4.0.0)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -32,6 +34,7 @@ DEPENDENCIES:
   - FDFullscreenPopGesture (~> 1.1)
   - MJExtension
   - MLeaksFinder (~> 0.2.1)
+  - SDCycleScrollView
   - SDWebImage (~> 4.0.0)
   - YTKNetwork
 
@@ -42,9 +45,10 @@ SPEC CHECKSUMS:
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MLeaksFinder: 0850e2f2abc7227adc4d4e2d1992b431264eb4d5
+  SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 27c6047a2d00169099a8670b2057888fd985a0a2
+PODFILE CHECKSUM: b467fc226a86ab16e615e3e4ee3e94c85af2a8fb
 
 COCOAPODS: 1.4.0.beta.2

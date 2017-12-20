@@ -7,13 +7,14 @@
 //
 
 #import "SearchViewController.h"
-#import "NoneCell.h"
 
 @interface SearchViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *searchList;//满足搜索条件的数组
 @property (strong, nonatomic) NSMutableArray *dataListArry;
+
+@property (strong, nonatomic) IBOutlet UIView *subView;
 
 @end
 
@@ -26,6 +27,9 @@
     self.dataListArry = [NSMutableArray new];
     
     self.tableView.tableFooterView = [[UIView alloc] init];
+    self.tableView.estimatedRowHeight = 44;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;//不加的话，table会下移
     self.edgesForExtendedLayout = UIRectEdgeNone;//不加的话，UISearchBar返回后会上移
     
@@ -33,6 +37,7 @@
     for (NSInteger i = 0; i<100; i++) {
         [self.dataListArry addObject:[NSString stringWithFormat:@"%ld%@",(long)i,[self shuffledAlphabet]]];
     }
+    [self getSearchHotWord];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +57,100 @@
     return strTest;
 }
 
+//搜索热词接口
+- (void)getSearchHotWord{
+    NSString *url = [NSString stringWithFormat:@"%@searchhotword.php",SERVER_IP];
+    DBLOG(@"请求路径：%@",url);
+    
+    [[ZBNetworking shaerdInstance]getWithUrl:url cache:NO params:nil progressBlock:nil successBlock:^(id response) {
+        //        NSLog(@"%@",response);
+        NSArray *data = response[@"data"];
+        if (data.count == 0) {
+            return;
+        }
+        
+        //然后加载到搜索页的View上。
+        int x = 15;
+        int y = 40;
+        int interval = 10;//间隔
+        int tempX = x;
+        for (int i = 0; i < 10; i ++) {
+            NSString *title = data[i][@"keyword"];
+            
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [button setTitle:title forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:14];
+            [button addTarget:self action:@selector(toSearchResults:) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = [data[i][@"id"] integerValue];
+            
+            //setBackground
+            UIImage *ima = [UIImage imageNamed:@"2-5_keywords-bg"];
+            ima = [ima stretchableImageWithLeftCapWidth:3 topCapHeight:10];
+            [button setBackgroundImage:ima forState:UIControlStateNormal];
+            
+            //setFrame
+            CGFloat buttonWidth = [title boundingRectWithSize:CGSizeMake(kScreenWidth, 400) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:14], NSFontAttributeName,nil] context:nil].size.width + 20;
+            if (tempX + buttonWidth + interval + 15 > kScreenWidth) {
+                x = 15;
+                y += 40;
+                tempX = 15;
+            }else if (i != 0){
+                x = tempX;
+            }
+            tempX += buttonWidth + interval;
+            
+            button.frame = CGRectMake(x, y, buttonWidth, 33);
+            [self.subView addSubview:button];
+        }
+    } failBlock:^(NSError *error) {
+        //        DBLOG(@"%@",error);
+        //测试数据
+        NSArray *dataArray = @[@"王思聪",@"何洁",@"周杰伦",@"慕容晓晓",@"邓紫棋",@"小燕子",@"赵薇",@"马云",@"岳云鹏"];
+        //然后加载到搜索页的View上。
+        int x = 15;
+        int y = 50;
+        int interval = 10;//间隔
+        int tempX = x;
+        for (int i = 0; i < dataArray.count+1; i ++) {
+            NSString *title = dataArray[i];//data[i][@"keyword"];
+            
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [button setTitle:title forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:14];
+            [button addTarget:self action:@selector(toSearchResults:) forControlEvents:UIControlEventTouchUpInside];
+            
+            //setBackground
+            UIImage *ima = [UIImage imageNamed:@"2-5_keywords-bg"];
+            ima = [ima stretchableImageWithLeftCapWidth:3 topCapHeight:10];
+            [button setBackgroundImage:ima forState:UIControlStateNormal];
+            
+            //setFrame
+            CGFloat buttonWidth = [title boundingRectWithSize:CGSizeMake(kScreenWidth, 400) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:14], NSFontAttributeName,nil] context:nil].size.width + 20;
+            if (tempX + buttonWidth + interval + 15 > kScreenWidth) {
+                x = 15;
+                y += 40;
+                tempX = 15;
+            }else if (i != 0){
+                x = tempX;
+            }
+            tempX += buttonWidth + interval;
+            
+            button.frame = CGRectMake(x, y, buttonWidth, 33);
+            [self.subView addSubview:button];
+        }
+    }];
+}
+
+//搜索、热词
+- (void)toSearchResults:(UIButton *)sender{
+//    SearchResultsCtrl *searchResult = [[SearchResultsCtrl alloc]initWithNibName:@"SearchResultsCtrl" bundle:nil];
+//    searchResult.keyStr = sender.titleLabel.text;//送妈妈
+//    searchResult.title = sender.titleLabel.text;
+//    [self.navigationController pushViewController:searchResult animated:YES];
+}
+
 #pragma mark - tableView
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.searchBar resignFirstResponder];
@@ -63,7 +162,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger i = self.searchList.count > 0 ? self.searchList.count : 1;
-    NSLog(@"=== %ld",i);
+    NSLog(@"tableCell行数 = %ld",i);
     return i;
 }
 
@@ -79,8 +178,14 @@
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return cell;
     }else{
-        NoneCell *cell = [[NSBundle mainBundle]loadNibNamed:@"NoneCell" owner:self options:nil][0];
+        static NSString *identifier = @"subViewCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [cell.contentView addSubview:self.subView];
         return cell;
     }
 }
@@ -107,6 +212,10 @@
     //刷新表格
     
     [self.tableView reloadData];
+}
+
+- (void)dealloc{
+    NSLog(@"searchVC");
 }
 
 @end

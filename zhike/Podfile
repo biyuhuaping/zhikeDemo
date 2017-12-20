@@ -12,13 +12,13 @@ pod 'SDWebImage','~>4.0.0'
 #pod 'MyLayout', '~> 1.5.0'
 #pod 'YTKKeyValueStore', '~> 0.1.2'
 pod 'MLeaksFinder', '~> 0.2.1'      #检测内存泄漏
-#pod 'AsyncDisplayKit', '~> 2.1'
-#pod 'CocoaLumberjack','~> 3.2.1'
+#pod 'AsyncDisplayKit', '~> 2.1'    #优化速度
+#pod 'CocoaLumberjack','~> 3.2.1'   #log日志
 #pod 'pop'
 #pod 'YTKKeyValueStore', '~> 0.1.2'
 #pod 'SDWebImage/GIF'
 pod 'DZNEmptyDataSet', '~> 1.8.1'   #空数据时，站位
 #pod 'MJRefresh', '~> 3.1.12'
 pod 'FDFullscreenPopGesture', '~> 1.1'
-
+pod 'SDCycleScrollView'
 end

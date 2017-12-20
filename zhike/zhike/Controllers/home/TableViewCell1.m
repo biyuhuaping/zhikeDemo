@@ -1,14 +1,14 @@
 //
-//  NoneCell.m
+//  TableViewCell1.m
 //  zhike
 //
-//  Created by 周博 on 2017/12/14.
+//  Created by 周博 on 2017/12/16.
 //  Copyright © 2017年 zhoubo. All rights reserved.
 //
 
-#import "NoneCell.h"
+#import "TableViewCell1.h"
 
-@implementation NoneCell
+@implementation TableViewCell1
 
 - (void)awakeFromNib {
     [super awakeFromNib];

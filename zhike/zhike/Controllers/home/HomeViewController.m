@@ -9,14 +9,18 @@
 #import "HomeViewController.h"
 #import <MJExtension.h>
 #import <YTKNetwork.h>
-#import "ZBNetworking.h"
-#import "ZBNetworkManager.h"
+#import <SDCycleScrollView.h>
+
 #import "SearchViewController.h"
+#import "TableViewCell1.h"
+#import "TableViewCell2.h"
+
+#import "ZBNetworkManager.h"
 
 #import "User.h"
 #import "RegisterModel.h"
 
-@interface HomeViewController ()<UISearchControllerDelegate,UISearchBarDelegate>
+@interface HomeViewController ()<UISearchControllerDelegate,UISearchBarDelegate,SDCycleScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataListArry;
@@ -24,21 +28,46 @@
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) SearchViewController *searchVC;
 
+
+@property (strong, nonatomic) NSMutableArray *banderImgArray;
+
+
+//导师、快问、精选 View
+@property (strong, nonatomic) IBOutlet UIView *subView;
+
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataListArry = [NSMutableArray new];
     self.automaticallyAdjustsScrollViewInsets = NO;//不加的话，table会下移
     self.edgesForExtendedLayout = UIRectEdgeNone;//不加的话，UISearchBar返回后会上移
 
-    //产生100个数字+三个随机字母
-    for (NSInteger i =0; i<100; i++) {
-        [self.dataListArry addObject:[NSString stringWithFormat:@"%ld%@",(long)i,[self shuffledAlphabet]]];
+    self.dataListArry = [NSMutableArray new];
+    self.banderImgArray = [NSMutableArray arrayWithCapacity:10];
+    
+    for (int i = 1; i<7; i++) {
+        NSString *str = [NSString stringWithFormat:@"cycle_image%d",i];
+        [self.banderImgArray addObject:[UIImage imageNamed:str]];
     }
+    
     [self initSearchController];
+    
+    
+    //设置tebleView
+//    iOS11之后searchController有了新样式，可以放在导航栏
+    if (@available(iOS 11.0, *)) {
+        self.navigationItem.searchController = self.searchController;
+    } else {
+        self.tableView.tableHeaderView = self.searchController.searchBar;
+    }
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+
+//    self.tableView.estimatedRowHeight = 44;
+//    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,47 +91,152 @@
     
     self.searchVC.nav = self.navigationController;
     self.searchVC.searchBar = self.searchController.searchBar;
-    
-    
-//    iOS11之后searchController有了新样式，可以放在导航栏
-    if (@available(iOS 11.0, *)) {
-        self.navigationItem.searchController = self.searchController;
-    } else {
-        self.tableView.tableHeaderView = self.searchController.searchBar;
-    }
-//    self.definesPresentationContext = YES;// 如果进入预编辑状态,searchBar消失
 
-    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    self.definesPresentationContext = YES;// 如果进入预编辑状态,searchBar消失
 }
 
-//产生3个随机字母
-- (NSString *)shuffledAlphabet {
-    NSMutableArray * shuffledAlphabet = [NSMutableArray arrayWithArray:@[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"]];
-    
-    NSString *strTest = [[NSString alloc]init];
-    for (int i=0; i<3; i++) {
-        int x = arc4random() % 25;
-        strTest = [NSString stringWithFormat:@"%@%@",strTest,shuffledAlphabet[x]];
-    }
-    return strTest;
+- (IBAction)subViewButtonAction:(UIButton *)sender {
+    NSLog(@"点击了按钮");
 }
+
 
 #pragma mark - tableView
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 0;
+    }
+    return 44;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.section) {
+        case 0:{
+            return kScreenWidth*9/16 + CGRectGetHeight(self.subView.frame);
+        }
+            break;
+        case 1:{
+            return 150;
+        }
+            break;
+        case 2:{
+            return 75;
+        }
+            break;
+    }
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewAutomaticDimension;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 3;//3组
+}
+
 //设置区域的行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataListArry.count;
+    switch (section) {
+        case 0:{
+            return 1;
+        }
+            break;
+        case 1:{
+            return 2;
+        }
+            break;
+        case 2:{
+            return 10;
+        }
+            break;
+    }
+    return 0;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)] ;
+    customView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 200.0, 44)] ;
+    headerLabel.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont systemFontOfSize:14];
+    [customView addSubview:headerLabel];
+
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(kScreenWidth-80, 0, 80, 44);
+    button.titleLabel.font = [UIFont systemFontOfSize:12];
+//    button.backgroundColor = [UIColor redColor];
+    [button setTitle:@" 看更多 >" forState:UIControlStateNormal];
+    [customView addSubview:button];
+    
+    switch (section) {
+        case 0:{
+            return nil;
+        }
+            break;
+        case 1:{
+            headerLabel.text = @"最新提问";
+        }
+            break;
+        case 2:{
+            headerLabel.text = @"名师推荐";
+        }
+            break;
+    }
+    return customView;
 }
 
 //返回单元格内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    switch (indexPath.section) {
+        case 0:{//banner
+            static NSString *identifier = @"cell1";
+            UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            if (indexPath.row == 0) {
+                float hight = kScreenWidth*9/16;
+                // 本地加载图片的轮播器
+                SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, hight) imageNamesGroup:self.banderImgArray];
+                cycleScrollView.delegate = self;
+                [cell.contentView addSubview:cycleScrollView];
+                
+                self.subView.frame = CGRectMake(0, hight, kScreenWidth, CGRectGetHeight(self.subView.frame));
+                [cell.contentView addSubview:self.subView];
+                
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            return cell;
+        }
+        case 1:{//分组1
+            static NSString *identifier = @"cell2";
+            TableViewCell1 *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell = [[NSBundle mainBundle]loadNibNamed:@"TableViewCell1" owner:self options:nil][0];
+            }
+//            cell.textLabel.text = [NSString stringWithFormat:@"分组1-%ld",indexPath.row];
+            return cell;
+        }
+        case 2:{//分组2
+            static NSString *identifier = @"cell3";
+            TableViewCell2 *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell = [[NSBundle mainBundle]loadNibNamed:@"TableViewCell2" owner:self options:nil][0];
+            }
+//            cell.textLabel.text = [NSString stringWithFormat:@"分组2-%ld",indexPath.row];
+            return cell;
+        }
     }
-    cell.textLabel.text = self.dataListArry[indexPath.row];
-    return cell;
+    return nil;
+}
+
+#pragma mark - SDCycleScrollViewDelegate
+
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+//    NSLog(@"---点击了第%ld张图片", (long)index);
+//    [self.navigationController pushViewController:[NSClassFromString(@"DemoVCWithXib") new] animated:YES];
 }
 
 #pragma mark - UISearchBarDelegate

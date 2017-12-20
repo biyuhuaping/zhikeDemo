@@ -8,8 +8,9 @@
 
 #import "QuestionViewController.h"
 #import "HomeViewController.h"
+#import <WebKit/WebKit.h>
 
-@interface QuestionViewController ()
+@interface QuestionViewController ()<WKNavigationDelegate>
 
 @end
 
@@ -18,6 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    webView.navigationDelegate = self;//需要实现 <span style="font-family: monospace; white-space: pre; background-color: rgb(240, 240, 240);">WKNavigationDelegate </span>
+    [webView loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString:@"http://www.baidu.com"]]];
+    
+    
+    [self.view addSubview:webView];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissView)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,19 +34,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dismissView{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 //    HomeViewController *home = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
 //    [self.navigationController pushViewController:home animated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
 
 @end

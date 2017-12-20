@@ -113,7 +113,6 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @param url              请求路径
  *  @param cache            是否缓存
- *  @param refresh          解释同上
  *  @param params           拼接参数
  *  @param progressBlock    进度回调
  *  @param successBlock     成功回调
@@ -121,7 +120,7 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @return 返回的对象中可取消请求
  */
-- (ZBURLSessionTask *)postWithUrl:(NSString *)url refreshRequest:(BOOL)refresh cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
+- (ZBURLSessionTask *)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
 
 
 
