@@ -20,6 +20,9 @@
 #import "User.h"
 #import "RegisterModel.h"
 
+#import "LatestAskViewController.h"
+#import "TeacherRecommendVC.h"
+
 @interface HomeViewController ()<UISearchControllerDelegate,UISearchBarDelegate,SDCycleScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -66,7 +69,7 @@
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 
-//    self.tableView.estimatedRowHeight = 44;
+//    self.tableView.estimatedRowHeight = 75;
 //    self.tableView.rowHeight = UITableViewAutomaticDimension;
 }
 
@@ -99,6 +102,16 @@
     NSLog(@"点击了按钮");
 }
 
+//点击查看更多 push 到对应页面
+- (void)nextViewController:(UIButton *)sender{
+    if (sender.tag == 10) {
+        LatestAskViewController *latestVC = [[LatestAskViewController alloc]initWithNibName:@"LatestAskViewController" bundle:nil];
+        [self.navigationController pushViewController:latestVC animated:YES];
+    }else{
+        TeacherRecommendVC *teacherVC = [[TeacherRecommendVC alloc]initWithNibName:@"TeacherRecommendVC" bundle:nil];
+        [self.navigationController pushViewController:teacherVC animated:YES];
+    }
+}
 
 #pragma mark - tableView
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -168,6 +181,7 @@
     button.titleLabel.font = [UIFont systemFontOfSize:12];
 //    button.backgroundColor = [UIColor redColor];
     [button setTitle:@" 看更多 >" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(nextViewController:) forControlEvents:UIControlEventTouchUpInside];
     [customView addSubview:button];
     
     switch (section) {
@@ -177,6 +191,7 @@
             break;
         case 1:{
             headerLabel.text = @"最新提问";
+            button.tag = 10;
         }
             break;
         case 2:{
@@ -199,9 +214,10 @@
             if (indexPath.row == 0) {
                 float hight = kScreenWidth*9/16;
                 // 本地加载图片的轮播器
-                SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, hight) imageNamesGroup:self.banderImgArray];
-                cycleScrollView.delegate = self;
-                [cell.contentView addSubview:cycleScrollView];
+                SDCycleScrollView *bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, hight) imageNamesGroup:self.banderImgArray];
+                bannerView.delegate = self;
+                bannerView.placeholderImage = [UIImage imageNamed:@"placeholder"];
+                [cell.contentView addSubview:bannerView];
                 
                 self.subView.frame = CGRectMake(0, hight, kScreenWidth, CGRectGetHeight(self.subView.frame));
                 [cell.contentView addSubview:self.subView];

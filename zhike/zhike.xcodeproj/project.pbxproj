@@ -38,6 +38,10 @@
 		C7B673D41FD63EB700C2CA0E /* ZBCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CB1FD63EB600C2CA0E /* ZBCacheManager.m */; };
 		C7B673D51FD63EB700C2CA0E /* ZBLRUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CE1FD63EB600C2CA0E /* ZBLRUManager.m */; };
 		C7B673D61FD63EB700C2CA0E /* ZBNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673D01FD63EB600C2CA0E /* ZBNetworking.m */; };
+		C7E040EC1FEA6159005D2CC2 /* LatestAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E040EA1FEA6159005D2CC2 /* LatestAskViewController.m */; };
+		C7E040ED1FEA6159005D2CC2 /* LatestAskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E040EB1FEA6159005D2CC2 /* LatestAskViewController.xib */; };
+		C7E040F21FEA6322005D2CC2 /* TeacherRecommendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E040F01FEA6322005D2CC2 /* TeacherRecommendVC.m */; };
+		C7E040F31FEA6322005D2CC2 /* TeacherRecommendVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E040F11FEA6322005D2CC2 /* TeacherRecommendVC.xib */; };
 		E4D351EFFCD44DD600E7F4A4 /* libPods-zhike.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 871304D3C206358966AD6A85 /* libPods-zhike.a */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +124,12 @@
 		C7B673CF1FD63EB600C2CA0E /* ZBCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBCacheManager.h; sourceTree = "<group>"; };
 		C7B673D01FD63EB600C2CA0E /* ZBNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBNetworking.m; sourceTree = "<group>"; };
 		C7B673D11FD63EB600C2CA0E /* ZBNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBNetworking.h; sourceTree = "<group>"; };
+		C7E040E91FEA6159005D2CC2 /* LatestAskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatestAskViewController.h; sourceTree = "<group>"; };
+		C7E040EA1FEA6159005D2CC2 /* LatestAskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatestAskViewController.m; sourceTree = "<group>"; };
+		C7E040EB1FEA6159005D2CC2 /* LatestAskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LatestAskViewController.xib; sourceTree = "<group>"; };
+		C7E040EF1FEA6322005D2CC2 /* TeacherRecommendVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeacherRecommendVC.h; sourceTree = "<group>"; };
+		C7E040F01FEA6322005D2CC2 /* TeacherRecommendVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeacherRecommendVC.m; sourceTree = "<group>"; };
+		C7E040F11FEA6322005D2CC2 /* TeacherRecommendVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeacherRecommendVC.xib; sourceTree = "<group>"; };
 		E6BCB10C52F102CFCA4D8FA3 /* Pods-zhike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhike.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhike/Pods-zhike.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +199,8 @@
 				C73921491FC7FD43004891E6 /* HomeViewController.h */,
 				C739214A1FC7FD43004891E6 /* HomeViewController.m */,
 				C739214B1FC7FD43004891E6 /* HomeViewController.xib */,
+				C7E040E81FEA6010005D2CC2 /* 最新提问 */,
+				C7E040EE1FEA6206005D2CC2 /* 名师推荐 */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -361,6 +373,26 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		C7E040E81FEA6010005D2CC2 /* 最新提问 */ = {
+			isa = PBXGroup;
+			children = (
+				C7E040E91FEA6159005D2CC2 /* LatestAskViewController.h */,
+				C7E040EA1FEA6159005D2CC2 /* LatestAskViewController.m */,
+				C7E040EB1FEA6159005D2CC2 /* LatestAskViewController.xib */,
+			);
+			name = "最新提问";
+			sourceTree = "<group>";
+		};
+		C7E040EE1FEA6206005D2CC2 /* 名师推荐 */ = {
+			isa = PBXGroup;
+			children = (
+				C7E040EF1FEA6322005D2CC2 /* TeacherRecommendVC.h */,
+				C7E040F01FEA6322005D2CC2 /* TeacherRecommendVC.m */,
+				C7E040F11FEA6322005D2CC2 /* TeacherRecommendVC.xib */,
+			);
+			name = "名师推荐";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -472,9 +504,11 @@
 			files = (
 				C73921571FC7FD62004891E6 /* MineViewController.xib in Resources */,
 				C739210E1FC7F98A004891E6 /* LaunchScreen.storyboard in Resources */,
+				C7E040ED1FEA6159005D2CC2 /* LatestAskViewController.xib in Resources */,
 				C77C9FF51FDF66EB003210F3 /* SearchViewController.xib in Resources */,
 				C72DB7C81FE4D64C007822DD /* TableViewCell2.xib in Resources */,
 				C739210B1FC7F98A004891E6 /* Assets.xcassets in Resources */,
+				C7E040F31FEA6322005D2CC2 /* TeacherRecommendVC.xib in Resources */,
 				C73921521FC7FD56004891E6 /* QuestionViewController.xib in Resources */,
 				C739214D1FC7FD43004891E6 /* HomeViewController.xib in Resources */,
 				C72DB7C31FE4D632007822DD /* TableViewCell1.xib in Resources */,
@@ -554,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C73921381FC7FBD5004891E6 /* BaseTabBarController.m in Sources */,
+				C7E040EC1FEA6159005D2CC2 /* LatestAskViewController.m in Sources */,
 				C73921561FC7FD62004891E6 /* MineViewController.m in Sources */,
 				C73921111FC7F98A004891E6 /* main.m in Sources */,
 				C7AD9B221FE909C900C1E6D5 /* CatchCrash.m in Sources */,
@@ -569,6 +604,7 @@
 				C73921031FC7F98A004891E6 /* AppDelegate.m in Sources */,
 				C7B673D31FD63EB700C2CA0E /* ZBDiskCache.m in Sources */,
 				C7B673D61FD63EB700C2CA0E /* ZBNetworking.m in Sources */,
+				C7E040F21FEA6322005D2CC2 /* TeacherRecommendVC.m in Sources */,
 				C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */,
 				C7B673D41FD63EB700C2CA0E /* ZBCacheManager.m in Sources */,
 				C739214C1FC7FD43004891E6 /* HomeViewController.m in Sources */,

@@ -70,10 +70,12 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         //默认解析模式
         manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//        manager.responseSerializer = [AFJSONResponseSerializer serializer];
         manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
         manager.requestSerializer.timeoutInterval = TIMEOUT;
         
+
         //配置响应序列化
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json", @"text/html", @"text/json", @"text/plain", @"text/javascript", @"text/xml", @"image/*", @"application/octet-stream", @"application/zip"]];
         _manager = manager;

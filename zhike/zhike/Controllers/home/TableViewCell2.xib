@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +23,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daoshi" translatesAutoresizingMaskIntoConstraints="NO" id="In1-rX-1oG">
                         <rect key="frame" x="15" y="19" width="37" height="37"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="37" id="55f-kN-ljb"/>
-                            <constraint firstAttribute="width" constant="37" id="JY4-8i-XtM"/>
+                            <constraint firstAttribute="height" constant="37" id="5E6-nv-tDX"/>
+                            <constraint firstAttribute="width" secondItem="In1-rX-1oG" secondAttribute="height" multiplier="1:1" id="72X-Al-g4M"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欧成效 | 果壳网副总裁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w11-Ad-r2z">
@@ -61,18 +62,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="In1-rX-1oG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="3QG-zD-4GG"/>
+                    <constraint firstItem="In1-rX-1oG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="63u-AW-gke"/>
                     <constraint firstItem="nck-bM-ILE" firstAttribute="centerY" secondItem="qOS-Xg-jbN" secondAttribute="centerY" id="F0g-eh-am0"/>
                     <constraint firstItem="w11-Ad-r2z" firstAttribute="leading" secondItem="In1-rX-1oG" secondAttribute="trailing" constant="8" id="G5Z-Rl-eCt"/>
                     <constraint firstItem="nck-bM-ILE" firstAttribute="leading" secondItem="qOS-Xg-jbN" secondAttribute="trailing" constant="20" id="K22-TX-EAo"/>
                     <constraint firstAttribute="trailing" secondItem="DPu-0k-mVV" secondAttribute="trailing" constant="15" id="Tqy-ML-MI6"/>
                     <constraint firstItem="w11-Ad-r2z" firstAttribute="top" secondItem="In1-rX-1oG" secondAttribute="top" id="mdr-YN-qNJ"/>
-                    <constraint firstItem="In1-rX-1oG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="n8q-4G-3wE"/>
                     <constraint firstItem="qOS-Xg-jbN" firstAttribute="leading" secondItem="In1-rX-1oG" secondAttribute="trailing" constant="8" id="puT-DC-bdU"/>
                     <constraint firstItem="qOS-Xg-jbN" firstAttribute="bottom" secondItem="In1-rX-1oG" secondAttribute="bottom" id="vMh-bo-qaS"/>
                     <constraint firstItem="DPu-0k-mVV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zcP-CU-Mfl"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <viewLayoutGuide key="safeArea" id="4UE-60-wp7"/>
             <connections>
                 <outlet property="btn" destination="DPu-0k-mVV" id="xwg-A6-Ns0"/>
             </connections>

@@ -147,8 +147,8 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @param url           上传文件地址
  *  @param datas         数据集合
- *  @param type          类型
  *  @param name          服务器文件夹名
+ *  @param fileName      上传文件名
  *  @param mimeTypes      mimeTypes
  *  @param progressBlock 上传进度
  *  @param successBlock  成功回调
