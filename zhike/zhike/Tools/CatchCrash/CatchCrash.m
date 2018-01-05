@@ -10,6 +10,10 @@
 
 @implementation CatchCrash
 
++ (void)initialize{
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+}
+
 // 出现崩溃时的回调函数
 void uncaughtExceptionHandler(NSException *exception){
     //获取系统当前时间，（注：用[NSDate date]直接获取的是格林尼治时间，有时差）

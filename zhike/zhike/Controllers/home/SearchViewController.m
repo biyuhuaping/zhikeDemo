@@ -112,7 +112,7 @@
         int y = 50;
         int interval = 10;//间隔
         int tempX = x;
-        for (int i = 0; i < dataArray.count+1; i ++) {
+        for (int i = 0; i < dataArray.count; i ++) {
             NSString *title = dataArray[i];//data[i][@"keyword"];
             
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

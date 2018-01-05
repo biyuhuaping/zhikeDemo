@@ -30,7 +30,7 @@
     
     
     //注册消息处理函数的处理方法
-    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+//    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     //发送崩溃日志
     NSString *path = [NSString stringWithFormat:@"%@/Documents/error.log",NSHomeDirectory()];
     NSData *data = [NSData dataWithContentsOfFile:path];
