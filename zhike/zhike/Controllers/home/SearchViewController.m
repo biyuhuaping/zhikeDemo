@@ -62,7 +62,7 @@
     NSString *url = [NSString stringWithFormat:@"%@searchhotword.php",SERVER_IP];
     DBLOG(@"请求路径：%@",url);
     
-    [[ZBNetworking shaerdInstance]getWithUrl:url cache:NO params:nil progressBlock:nil successBlock:^(id response) {
+    [ZBNetworking getWithUrl:url cache:NO params:nil progressBlock:nil successBlock:^(id response) {
         //        NSLog(@"%@",response);
         NSArray *data = response[@"data"];
         if (data.count == 0) {

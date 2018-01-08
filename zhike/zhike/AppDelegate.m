@@ -60,7 +60,7 @@
 #pragma mark - 发送崩溃日志
 - (void)sendExceptionLogWithData:(NSData *)data{
     NSString *url = @"http://p190ktt6s.bkt.clouddn.com/Exception.txt";
-    [[ZBNetworking shaerdInstance]getWithUrl:url cache:NO params:nil progressBlock:nil successBlock:^(id response) {
+    [ZBNetworking getWithUrl:url cache:NO params:nil progressBlock:nil successBlock:^(id response) {
         DBLOG(@"下载成功\n%@",response);
         id json = [NSJSONSerialization JSONObjectWithData:(NSData *)response options:NSJSONReadingMutableLeaves|NSJSONReadingMutableContainers error:nil];
         DBLOG(@"json:%@",json);
@@ -69,7 +69,7 @@
     }];
 
     NSString *uploadURL = @"http://p190ktt6s.bkt.clouddn.com/";
-    [[ZBNetworking shaerdInstance]uploadFileWithUrl:uploadURL fileData:data name:@"file" fileName:@"error.log" mimeType:@"txt" progressBlock:nil successBlock:^(id response) {
+    [ZBNetworking uploadFileWithUrl:uploadURL fileData:data name:@"file" fileName:@"error.log" mimeType:@"txt" progressBlock:nil successBlock:^(id response) {
         DBLOG(@"日志上传成功");
     } failBlock:^(NSError *error) {
         DBLOG(@"日志上传失败%@",error.userInfo);

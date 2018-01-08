@@ -340,7 +340,7 @@
 #pragma mark -
 - (IBAction)ZBNetworking:(id)sender {
     NSString *url = @"http://news-at.zhihu.com/api/4/news/latest";
-    [[ZBNetworking shaerdInstance]getWithUrl:url cache:NO params:nil progressBlock:^(int64_t bytesRead, int64_t totalBytes) {
+    [ZBNetworking getWithUrl:url cache:NO params:nil progressBlock:^(int64_t bytesRead, int64_t totalBytes) {
         NSLog(@"%lld--%lld",bytesRead,totalBytes);
 //        [NSThread sleepForTimeInterval:5];
     } successBlock:^(id response) {
@@ -350,7 +350,7 @@
     } failBlock:^(NSError *error) {
 //        DBLOG(@"%@",error);
     }];
-    NSLog(@"缓存size is %lu",(unsigned long)[[ZBNetworking shaerdInstance]totalCacheSize]);
+    NSLog(@"缓存size is %lu",(unsigned long)[ZBNetworking totalCacheSize]);
 }
 
 - (IBAction)ZBNetworkManager:(id)sender {

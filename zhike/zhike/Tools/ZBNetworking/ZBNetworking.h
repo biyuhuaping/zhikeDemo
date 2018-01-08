@@ -65,29 +65,21 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
 
 @interface ZBNetworking : NSObject
 
-+ (instancetype)shaerdInstance;
-/**
- *  正在运行的网络任务
- *  @return task
- */
-- (NSArray *)currentRunningTasks;
-
-
 /**
  *  配置请求头
  *  @param httpHeader 请求头
  */
-- (void)configHttpHeader:(NSDictionary *)httpHeader;
++ (void)configHttpHeader:(NSDictionary *)httpHeader;
 
 /**
  *  取消GET请求
  */
-- (void)cancelRequestWithURL:(NSString *)url;
++ (void)cancelRequestWithURL:(NSString *)url;
 
 /**
  *  取消所有请求
  */
-- (void)cancleAllRequest;
++ (void)cancleAllRequest;
 
 
 
@@ -103,7 +95,7 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @return 返回的对象中可取消请求
  */
-- (ZBURLSessionTask *)getWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBGetProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
++ (ZBURLSessionTask *)getWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBGetProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
 
 
 
@@ -120,7 +112,7 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @return 返回的对象中可取消请求
  */
-- (ZBURLSessionTask *)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
++ (ZBURLSessionTask *)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
 
 
 
@@ -139,7 +131,7 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @return 返回的对象中可取消请求
  */
-- (ZBURLSessionTask *)uploadFileWithUrl:(NSString *)url fileData:(NSData *)data name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
++ (ZBURLSessionTask *)uploadFileWithUrl:(NSString *)url fileData:(NSData *)data name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
 
 
 /**
@@ -156,7 +148,7 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @return 任务集合
  */
-- (NSArray *)uploadMultFileWithUrl:(NSString *)url fileDatas:(NSArray *)datas name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeTypes progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBMultUploadSuccessBlock)successBlock failBlock:(ZBMultUploadFailBlock)failBlock;
++ (NSArray *)uploadMultFileWithUrl:(NSString *)url fileDatas:(NSArray *)datas name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeTypes progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBMultUploadSuccessBlock)successBlock failBlock:(ZBMultUploadFailBlock)failBlock;
 
 
 /**
@@ -169,7 +161,7 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @return 返回的对象可取消请求
  */
-- (ZBURLSessionTask *)downloadWithUrl:(NSString *)url progressBlock:(ZBDownloadProgress)progressBlock successBlock:(ZBDownloadSuccessBlock)successBlock failBlock:(ZBDownloadFailBlock)failBlock;
++ (ZBURLSessionTask *)downloadWithUrl:(NSString *)url progressBlock:(ZBDownloadProgress)progressBlock successBlock:(ZBDownloadSuccessBlock)successBlock failBlock:(ZBDownloadFailBlock)failBlock;
 
 @end
 
@@ -182,37 +174,37 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *
  *  @return 缓存目录路径
  */
-- (NSString *)getCacheDiretoryPath;
++ (NSString *)getCacheDiretoryPath;
 
 /**
  *  获取下载目录路径
  *
  *  @return 下载目录路径
  */
-- (NSString *)getDownDirectoryPath;
++ (NSString *)getDownDirectoryPath;
 
 /**
  *  获取缓存大小
  *
  *  @return 缓存大小
  */
-- (NSUInteger)totalCacheSize;
++ (NSUInteger)totalCacheSize;
 
 /**
  *  获取所有下载数据大小
  *
  *  @return 下载数据大小
  */
-- (NSUInteger)totalDownloadDataSize;
++ (NSUInteger)totalDownloadDataSize;
 
 /**
  *  清除下载数据
  */
-- (void)clearDownloadData;
++ (void)clearDownloadData;
 
 /**
  *  清除所有缓存
  */
-- (void)clearTotalCache;
++ (void)clearTotalCache;
 
 @end
