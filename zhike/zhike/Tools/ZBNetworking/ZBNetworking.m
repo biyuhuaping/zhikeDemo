@@ -36,8 +36,9 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
 @end
 
 
-
-
+@interface ZBNetworking()
+@property (assign, nonatomic) AFHTTPSessionManager *manager;
+@end
 
 @implementation ZBNetworking
 
@@ -52,43 +53,49 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
     }];
 }
 
-+ (NSMutableArray *)requestTasksPool{
++ (instancetype)shaerdInstance{
+    static ZBNetworking *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken,^{
-        if (!requestTasksPool) {
-            requestTasksPool  = [NSMutableArray array];
-        }
+        instance = [[self alloc] init];
+        requestTasksPool  = [NSMutableArray array];
     });
-    return requestTasksPool;
+    return instance;
 }
 
 #pragma mark - manager
-+ (AFHTTPSessionManager *)manager {
+- (AFHTTPSessionManager *)manager {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    //默认解析模式
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    if (!_manager) {
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        //默认解析模式
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 //        manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
-    manager.requestSerializer.timeoutInterval = TIMEOUT;
-    
+        manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
+        manager.requestSerializer.timeoutInterval = TIMEOUT;
+        
 
-    //配置响应序列化
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json", @"text/html", @"text/json", @"text/plain", @"text/javascript", @"text/xml", @"image/*", @"application/octet-stream", @"application/zip"]];
-
+        //配置响应序列化
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json", @"text/html", @"text/json", @"text/plain", @"text/javascript", @"text/xml", @"image/*", @"application/octet-stream", @"application/zip"]];
+        _manager = manager;
+    }
     for (NSString *key in headers.allKeys) {
         if (headers[key] != nil) {
-            [manager.requestSerializer setValue:headers[key] forHTTPHeaderField:key];
+            [_manager.requestSerializer setValue:headers[key] forHTTPHeaderField:key];
         }
     }
     //每次网络请求的时候，检查此时磁盘中的缓存大小，阈值默认是40MB，如果超过阈值，则清理LRU缓存,同时也会清理过期缓存，缓存默认SSL是7天，磁盘缓存的大小和SSL的设置可以通过该方法[ZBCacheManager shareManager] setCacheTime: diskCapacity:]设置
     [[ZBCacheManager shareManager] clearLRUCache];
-    return manager;
+    return _manager;
 }
 
 #pragma mark - get
-+ (ZBURLSessionTask *)getWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBGetProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
++ (void)getWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBGetProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock{
+    [[ZBNetworking shaerdInstance]getWithUrl:url cache:cache params:params progressBlock:progressBlock successBlock:successBlock failBlock:failBlock];
+}
+
+- (ZBURLSessionTask *)getWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBGetProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
     //将session拷贝到堆中，block内部才可以获取得到session
     __block ZBURLSessionTask *session = nil;
     AFHTTPSessionManager *manager = [self manager];
@@ -119,10 +126,10 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
         if (cache) {
             [[ZBCacheManager shareManager] cacheResponseObject:responseObject requestUrl:url params:params];
         }
-        [[self requestTasksPool] removeObject:session];
+        [requestTasksPool removeObject:session];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failBlock) failBlock(error);
-        [[self requestTasksPool] removeObject:session];
+        [requestTasksPool removeObject:session];
     }];
     
     //判断重复请求，如果有重复请求，取消新请求
@@ -132,15 +139,19 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
     }else {
         //无论是否有旧请求，先执行取消旧请求，反正都需要刷新请求
         ZBURLSessionTask *oldTask = [self cancleSameRequestInTasksPool:session];
-        if (oldTask) [[self requestTasksPool] removeObject:oldTask];
-        if (session) [[self requestTasksPool] addObject:session];
+        if (oldTask) [requestTasksPool removeObject:oldTask];
+        if (session) [requestTasksPool addObject:session];
         [session resume];
         return session;
     }
 }
 
 #pragma mark post
-+ (ZBURLSessionTask *)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
++ (void)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock{
+    [[ZBNetworking shaerdInstance]postWithUrl:url cache:cache params:params progressBlock:progressBlock successBlock:successBlock failBlock:failBlock];
+}
+
+- (ZBURLSessionTask *)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
     __block ZBURLSessionTask *session = nil;
     AFHTTPSessionManager *manager = [self manager];
     if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
@@ -159,12 +170,12 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
         BOOL isValid = [self networkResponseManage:responseObject];
         if (successBlock && isValid) successBlock(responseObject);
         if (cache) [[ZBCacheManager shareManager] cacheResponseObject:responseObject requestUrl:url params:params];
-        if ([[self requestTasksPool] containsObject:session]) {
-            [[self requestTasksPool] removeObject:session];
+        if ([requestTasksPool containsObject:session]) {
+            [requestTasksPool removeObject:session];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failBlock) failBlock(error);
-        [[self requestTasksPool] removeObject:session];
+        [requestTasksPool removeObject:session];
     }];
     //判断重复请求，如果有重复请求，取消新请求
     if ([self haveSameRequestInTasksPool:session]) {
@@ -173,15 +184,19 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
     }else {
         //无论是否有旧请求，先执行取消旧请求，反正都需要刷新请求
         ZBURLSessionTask *oldTask = [self cancleSameRequestInTasksPool:session];
-        if (oldTask) [[self requestTasksPool] removeObject:oldTask];
-        if (session) [[self requestTasksPool] addObject:session];
+        if (oldTask) [requestTasksPool removeObject:oldTask];
+        if (session) [requestTasksPool addObject:session];
         [session resume];
         return session;
     }
 }
 
 #pragma mark 文件上传
-+ (ZBURLSessionTask *)uploadFileWithUrl:(NSString *)url fileData:(NSData *)data name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
++ (void)uploadFileWithUrl:(NSString *)url fileData:(NSData *)data name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock{
+    [[ZBNetworking shaerdInstance]uploadFileWithUrl:url fileData:data name:name fileName:fileName mimeType:mimeType progressBlock:progressBlock successBlock:successBlock failBlock:failBlock];
+}
+
+- (ZBURLSessionTask *)uploadFileWithUrl:(NSString *)url fileData:(NSData *)data name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock {
     __block ZBURLSessionTask *session = nil;
     AFHTTPSessionManager *manager = [self manager];
     if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
@@ -195,20 +210,24 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
         if (progressBlock) progressBlock (uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (successBlock) successBlock(responseObject);
-        [[self requestTasksPool] removeObject:session];
+        [requestTasksPool removeObject:session];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failBlock) failBlock(error);
-        [[self requestTasksPool] removeObject:session];
+        [requestTasksPool removeObject:session];
     }];
     
     
     [session resume];
-    if (session) [[self requestTasksPool] addObject:session];
+    if (session) [requestTasksPool addObject:session];
     return session;
 }
 
 #pragma mark 多文件上传
-+ (NSArray *)uploadMultFileWithUrl:(NSString *)url fileDatas:(NSArray *)datas name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeTypes progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBMultUploadSuccessBlock)successBlock failBlock:(ZBMultUploadFailBlock)failBlock {
++ (NSArray *)uploadMultFileWithUrl:(NSString *)url fileDatas:(NSArray *)datas name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeTypes progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBMultUploadSuccessBlock)successBlock failBlock:(ZBMultUploadFailBlock)failBlock{
+    return [[ZBNetworking shaerdInstance]uploadMultFileWithUrl:url fileDatas:datas name:name fileName:fileName mimeType:mimeTypes progressBlock:progressBlock successBlock:successBlock failBlock:failBlock];
+}
+
+- (NSArray *)uploadMultFileWithUrl:(NSString *)url fileDatas:(NSArray *)datas name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeTypes progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBMultUploadSuccessBlock)successBlock failBlock:(ZBMultUploadFailBlock)failBlock {
     
     if (networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable) {
         if (failBlock) failBlock(@[ZB_ERROR]);
@@ -241,14 +260,14 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
         if (session) [sessions addObject:session];
     }
     
-    [[self requestTasksPool] addObjectsFromArray:sessions];
+    [requestTasksPool addObjectsFromArray:sessions];
     
     dispatch_group_notify(uploadGroup, dispatch_get_main_queue(), ^{
         if (responses.count > 0) {
             if (successBlock) {
                 successBlock([responses copy]);
                 if (sessions.count > 0) {
-                    [[self requestTasksPool] removeObjectsInArray:sessions];
+                    [requestTasksPool removeObjectsInArray:sessions];
                 }
             }
         }
@@ -257,7 +276,7 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
             if (failBlock) {
                 failBlock([failResponse copy]);
                 if (sessions.count > 0) {
-                    [[self requestTasksPool] removeObjectsInArray:sessions];
+                    [requestTasksPool removeObjectsInArray:sessions];
                 }
             }
         }
@@ -267,7 +286,11 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
 }
 
 #pragma mark 下载
-+ (ZBURLSessionTask *)downloadWithUrl:(NSString *)url progressBlock:(ZBDownloadProgress)progressBlock successBlock:(ZBDownloadSuccessBlock)successBlock failBlock:(ZBDownloadFailBlock)failBlock {
++ (void)downloadWithUrl:(NSString *)url progressBlock:(ZBDownloadProgress)progressBlock successBlock:(ZBDownloadSuccessBlock)successBlock failBlock:(ZBDownloadFailBlock)failBlock{
+    [[ZBNetworking shaerdInstance]downloadWithUrl:url progressBlock:progressBlock successBlock:successBlock failBlock:failBlock];
+}
+
+- (ZBURLSessionTask *)downloadWithUrl:(NSString *)url progressBlock:(ZBDownloadProgress)progressBlock successBlock:(ZBDownloadSuccessBlock)successBlock failBlock:(ZBDownloadFailBlock)failBlock {
 //    NSString *type = nil;
 //    NSArray *subStringArr = nil;
     __block ZBURLSessionTask *session = nil;
@@ -305,7 +328,7 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
     }];
     
     [session resume];
-    if (session) [[self requestTasksPool] addObject:session];
+    if (session) [requestTasksPool addObject:session];
     return session;
 }
 
@@ -317,9 +340,9 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
  *
  *  @return bool
  */
-+ (BOOL)haveSameRequestInTasksPool:(ZBURLSessionTask *)task {
+- (BOOL)haveSameRequestInTasksPool:(ZBURLSessionTask *)task {
     __block BOOL isSame = NO;
-    [[self requestTasksPool] enumerateObjectsUsingBlock:^(ZBURLSessionTask *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [[self currentRunningTasks] enumerateObjectsUsingBlock:^(ZBURLSessionTask *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([task.originalRequest isTheSameRequest:obj.originalRequest]) {
             isSame  = YES;
             *stop = YES;
@@ -334,10 +357,10 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
  *  @param task 新请求
  *  @return 旧请求
  */
-+ (ZBURLSessionTask *)cancleSameRequestInTasksPool:(ZBURLSessionTask *)task {
+- (ZBURLSessionTask *)cancleSameRequestInTasksPool:(ZBURLSessionTask *)task {
     __block ZBURLSessionTask *oldTask = nil;
     
-    [[self requestTasksPool] enumerateObjectsUsingBlock:^(ZBURLSessionTask *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [[self currentRunningTasks] enumerateObjectsUsingBlock:^(ZBURLSessionTask *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([task.originalRequest isTheSameRequest:obj.originalRequest]) {
             if (obj.state == NSURLSessionTaskStateRunning) {
                 [obj cancel];
@@ -351,21 +374,27 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
 }
 
 #pragma mark - other method
-+ (void)cancleAllRequest {
+/**
+ *  取消所有请求
+ */
+- (void)cancleAllRequest {
     @synchronized (self) {
-        [[self requestTasksPool] enumerateObjectsUsingBlock:^(ZBURLSessionTask  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [requestTasksPool enumerateObjectsUsingBlock:^(ZBURLSessionTask  *_Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass:[ZBURLSessionTask class]]) {
                 [obj cancel];
             }
         }];
-        [[self requestTasksPool] removeAllObjects];
+        [requestTasksPool removeAllObjects];
     }
 }
 
-+ (void)cancelRequestWithURL:(NSString *)url {
+/**
+ *  取消GET请求
+ */
+- (void)cancelRequestWithURL:(NSString *)url {
     if (!url) return;
     @synchronized (self) {
-        [[self requestTasksPool] enumerateObjectsUsingBlock:^(ZBURLSessionTask * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [requestTasksPool enumerateObjectsUsingBlock:^(ZBURLSessionTask * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass:[ZBURLSessionTask class]]) {
                 if ([obj.currentRequest.URL.absoluteString hasSuffix:url]) {
                     [obj cancel];
@@ -376,13 +405,25 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
     }
 }
 
-+ (void)configHttpHeader:(NSDictionary *)httpHeader {
+/**
+ *  配置请求头
+ *  @param httpHeader 请求头
+ */
+- (void)configHttpHeader:(NSDictionary *)httpHeader {
     headers = httpHeader;
+}
+
+/**
+ *  正在运行的网络任务
+ *  @return task
+ */
+- (NSArray *)currentRunningTasks {
+    return [requestTasksPool copy];
 }
 
 #pragma mark - 网络回调统一处理
 //网络回调统一处理
-+ (BOOL)networkResponseManage:(id)responseObject{
+- (BOOL)networkResponseManage:(id)responseObject{
     NSData *data = nil;
     NSError *error = nil;
     if ([responseObject isKindOfClass:[NSData class]]) {

@@ -63,25 +63,17 @@ typedef ZBDownloadProgress ZBGetProgress;
 typedef ZBDownloadProgress ZBPostProgress;
 typedef ZBResponseFailBlock ZBDownloadFailBlock;
 
+
+
+
+
+
+
+
+
+
+
 @interface ZBNetworking : NSObject
-
-/**
- *  配置请求头
- *  @param httpHeader 请求头
- */
-+ (void)configHttpHeader:(NSDictionary *)httpHeader;
-
-/**
- *  取消GET请求
- */
-+ (void)cancelRequestWithURL:(NSString *)url;
-
-/**
- *  取消所有请求
- */
-+ (void)cancleAllRequest;
-
-
 
 /**
  *  GET请求
@@ -92,10 +84,8 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *  @param progressBlock    进度回调
  *  @param successBlock     成功回调
  *  @param failBlock        失败回调
- *
- *  @return 返回的对象中可取消请求
  */
-+ (ZBURLSessionTask *)getWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBGetProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
++ (void)getWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBGetProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
 
 
 
@@ -110,9 +100,8 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *  @param successBlock     成功回调
  *  @param failBlock        失败回调
  *
- *  @return 返回的对象中可取消请求
  */
-+ (ZBURLSessionTask *)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
++ (void)postWithUrl:(NSString *)url cache:(BOOL)cache params:(NSDictionary *)params progressBlock:(ZBPostProgress)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
 
 
 
@@ -129,9 +118,8 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *	@param successBlock     成功回调
  *	@param failBlock		失败回调
  *
- *  @return 返回的对象中可取消请求
  */
-+ (ZBURLSessionTask *)uploadFileWithUrl:(NSString *)url fileData:(NSData *)data name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
++ (void)uploadFileWithUrl:(NSString *)url fileData:(NSData *)data name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBResponseSuccessBlock)successBlock failBlock:(ZBResponseFailBlock)failBlock;
 
 
 /**
@@ -146,7 +134,6 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *  @param successBlock  成功回调
  *  @param failBlock     失败回调
  *
- *  @return 任务集合
  */
 + (NSArray *)uploadMultFileWithUrl:(NSString *)url fileDatas:(NSArray *)datas name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeTypes progressBlock:(ZBUploadProgressBlock)progressBlock successBlock:(ZBMultUploadSuccessBlock)successBlock failBlock:(ZBMultUploadFailBlock)failBlock;
 
@@ -159,11 +146,13 @@ typedef ZBResponseFailBlock ZBDownloadFailBlock;
  *  @param successBlock  成功回调
  *  @param failBlock     下载回调
  *
- *  @return 返回的对象可取消请求
  */
-+ (ZBURLSessionTask *)downloadWithUrl:(NSString *)url progressBlock:(ZBDownloadProgress)progressBlock successBlock:(ZBDownloadSuccessBlock)successBlock failBlock:(ZBDownloadFailBlock)failBlock;
++ (void)downloadWithUrl:(NSString *)url progressBlock:(ZBDownloadProgress)progressBlock successBlock:(ZBDownloadSuccessBlock)successBlock failBlock:(ZBDownloadFailBlock)failBlock;
 
 @end
+
+
+
 
 
 
