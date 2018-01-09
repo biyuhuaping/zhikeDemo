@@ -243,7 +243,7 @@
 				C739217B1FCE43A0004891E6 /* PrefixHeader.pch */,
 				C739210F1FC7F98A004891E6 /* Info.plist */,
 				C73921101FC7F98A004891E6 /* main.m */,
-				C73921621FCCFCBF004891E6 /* ThirdLib */,
+				C7847C80200360E700F2434B /* ThirdLib */,
 				C73921611FCCFCBF004891E6 /* Tools */,
 				C73921391FC7FC19004891E6 /* Controllers */,
 			);
@@ -294,13 +294,6 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		C73921621FCCFCBF004891E6 /* ThirdLib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ThirdLib;
-			sourceTree = "<group>";
-		};
 		C73921911FD10396004891E6 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +330,13 @@
 				C73921501FC7FD56004891E6 /* QuestionViewController.xib */,
 			);
 			path = question;
+			sourceTree = "<group>";
+		};
+		C7847C80200360E700F2434B /* ThirdLib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdLib;
 			sourceTree = "<group>";
 		};
 		C79971381FEA095F005D0B4D /* CatchCrash */ = {

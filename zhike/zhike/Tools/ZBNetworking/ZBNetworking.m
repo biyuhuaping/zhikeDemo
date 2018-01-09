@@ -128,7 +128,9 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
         }
         [requestTasksPool removeObject:session];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failBlock) failBlock(error);
+        if([error code] != NSURLErrorCancelled && failBlock){
+            failBlock(error);
+        }
         [requestTasksPool removeObject:session];
     }];
     
@@ -174,7 +176,9 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
             [requestTasksPool removeObject:session];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failBlock) failBlock(error);
+        if([error code] != NSURLErrorCancelled && failBlock){
+            failBlock(error);
+        }
         [requestTasksPool removeObject:session];
     }];
     //判断重复请求，如果有重复请求，取消新请求
@@ -212,7 +216,9 @@ static AFNetworkReachabilityStatus networkReachabilityStatus;
         if (successBlock) successBlock(responseObject);
         [requestTasksPool removeObject:session];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (failBlock) failBlock(error);
+        if([error code] != NSURLErrorCancelled && failBlock){
+            failBlock(error);
+        }
         [requestTasksPool removeObject:session];
     }];
     
