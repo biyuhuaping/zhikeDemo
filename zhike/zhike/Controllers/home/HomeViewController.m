@@ -20,13 +20,14 @@
 #import "User.h"
 #import "RegisterModel.h"
 
-#import "LatestAskViewController.h"
-#import "TeacherRecommendVC.h"
+#import "LatestAskViewController.h"//最新提问
+#import "TeacherRecommendVC.h"//名师推荐
+#import "FindMentorVC.h"//找导师
 
 @interface HomeViewController ()<UISearchControllerDelegate,UISearchBarDelegate,SDCycleScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *dataListArry;
+@property (strong, nonatomic) NSMutableArray *dataArray;
 
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) SearchViewController *searchVC;
@@ -47,7 +48,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;//不加的话，table会下移
     self.edgesForExtendedLayout = UIRectEdgeNone;//不加的话，UISearchBar返回后会上移
 
-    self.dataListArry = [NSMutableArray new];
+    self.dataArray = [NSMutableArray new];
     self.banderImgArray = [NSMutableArray arrayWithCapacity:10];
     
     for (int i = 1; i<7; i++) {
@@ -67,7 +68,7 @@
     }
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 
 //    self.tableView.estimatedRowHeight = 75;
 //    self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -99,6 +100,21 @@
 }
 
 - (IBAction)subViewButtonAction:(UIButton *)sender {
+    switch (sender.tag) {
+            case 110:{//找导师
+                FindMentorVC *findMentor = [[FindMentorVC alloc]initWithNibName:@"FindMentorVC" bundle:nil];
+                [self.navigationController pushViewController:findMentor animated:YES];
+            }
+            break;
+            case 111:{//快问
+                
+            }
+            break;
+            case 112:{//精选
+                
+            }
+            break;
+    }
     NSLog(@"点击了按钮");
 }
 
@@ -211,19 +227,17 @@
             if (!cell) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
-            if (indexPath.row == 0) {
-                float hight = kScreenWidth*9/16;
-                // 本地加载图片的轮播器
-                SDCycleScrollView *bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, hight) imageNamesGroup:self.banderImgArray];
-                bannerView.delegate = self;
-                bannerView.placeholderImage = [UIImage imageNamed:@"placeholder"];
-                [cell.contentView addSubview:bannerView];
-                
-                self.subView.frame = CGRectMake(0, hight, kScreenWidth, CGRectGetHeight(self.subView.frame));
-                [cell.contentView addSubview:self.subView];
-                
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+            float hight = kScreenWidth*9/16;
+            // 本地加载图片的轮播器
+            SDCycleScrollView *bannerView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, hight) imageNamesGroup:self.banderImgArray];
+            bannerView.delegate = self;
+            bannerView.placeholderImage = [UIImage imageNamed:@"placeholder"];
+            [cell.contentView addSubview:bannerView];
+            
+            self.subView.frame = CGRectMake(0, hight, kScreenWidth, CGRectGetHeight(self.subView.frame));
+            [cell.contentView addSubview:self.subView];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
         case 1:{//分组1

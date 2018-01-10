@@ -15,8 +15,6 @@
 		C739210B1FC7F98A004891E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C739210A1FC7F98A004891E6 /* Assets.xcassets */; };
 		C739210E1FC7F98A004891E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C739210C1FC7F98A004891E6 /* LaunchScreen.storyboard */; };
 		C73921111FC7F98A004891E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921101FC7F98A004891E6 /* main.m */; };
-		C739211B1FC7F98A004891E6 /* zhikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C739211A1FC7F98A004891E6 /* zhikeTests.m */; };
-		C73921261FC7F98B004891E6 /* zhikeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921251FC7F98B004891E6 /* zhikeUITests.m */; };
 		C73921351FC7FBA2004891E6 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921341FC7FBA2004891E6 /* BaseNavigationController.m */; };
 		C73921381FC7FBD5004891E6 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921371FC7FBD5004891E6 /* BaseTabBarController.m */; };
 		C739214C1FC7FD43004891E6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C739214A1FC7FD43004891E6 /* HomeViewController.m */; };
@@ -32,6 +30,8 @@
 		C73921971FD15482004891E6 /* ZBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921961FD15482004891E6 /* ZBTabBar.m */; };
 		C77C9FF41FDF66EB003210F3 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C77C9FF21FDF66EB003210F3 /* SearchViewController.m */; };
 		C77C9FF51FDF66EB003210F3 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77C9FF31FDF66EB003210F3 /* SearchViewController.xib */; };
+		C7918D8B2004B7F7008AF75A /* FindMentorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7918D892004B7F7008AF75A /* FindMentorVC.m */; };
+		C7918D8C2004B7F7008AF75A /* FindMentorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7918D8A2004B7F7008AF75A /* FindMentorVC.xib */; };
 		C7AD9B221FE909C900C1E6D5 /* CatchCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = C7AD9B211FE909C900C1E6D5 /* CatchCrash.m */; };
 		C7B673D21FD63EB700C2CA0E /* ZBMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673C81FD63EB600C2CA0E /* ZBMemoryCache.m */; };
 		C7B673D31FD63EB700C2CA0E /* ZBDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CA1FD63EB600C2CA0E /* ZBDiskCache.m */; };
@@ -80,10 +80,8 @@
 		C739210F1FC7F98A004891E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73921101FC7F98A004891E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C73921161FC7F98A004891E6 /* zhikeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zhikeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C739211A1FC7F98A004891E6 /* zhikeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zhikeTests.m; sourceTree = "<group>"; };
 		C739211C1FC7F98A004891E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73921211FC7F98A004891E6 /* zhikeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zhikeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C73921251FC7F98B004891E6 /* zhikeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zhikeUITests.m; sourceTree = "<group>"; };
 		C73921271FC7F98B004891E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C73921331FC7FBA2004891E6 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		C73921341FC7FBA2004891E6 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
@@ -112,6 +110,9 @@
 		C77C9FF11FDF66EB003210F3 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		C77C9FF21FDF66EB003210F3 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		C77C9FF31FDF66EB003210F3 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		C7918D882004B7F7008AF75A /* FindMentorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindMentorVC.h; sourceTree = "<group>"; };
+		C7918D892004B7F7008AF75A /* FindMentorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindMentorVC.m; sourceTree = "<group>"; };
+		C7918D8A2004B7F7008AF75A /* FindMentorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindMentorVC.xib; sourceTree = "<group>"; };
 		C7AD9B201FE909C900C1E6D5 /* CatchCrash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CatchCrash.h; sourceTree = "<group>"; };
 		C7AD9B211FE909C900C1E6D5 /* CatchCrash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatchCrash.m; sourceTree = "<group>"; };
 		C7B673C81FD63EB600C2CA0E /* ZBMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBMemoryCache.m; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 				C73921491FC7FD43004891E6 /* HomeViewController.h */,
 				C739214A1FC7FD43004891E6 /* HomeViewController.m */,
 				C739214B1FC7FD43004891E6 /* HomeViewController.xib */,
+				C7918D822004B738008AF75A /* 找导师 */,
 				C7E040E81FEA6010005D2CC2 /* 最新提问 */,
 				C7E040EE1FEA6206005D2CC2 /* 名师推荐 */,
 			);
@@ -253,7 +255,6 @@
 		C73921191FC7F98A004891E6 /* zhikeTests */ = {
 			isa = PBXGroup;
 			children = (
-				C739211A1FC7F98A004891E6 /* zhikeTests.m */,
 				C739211C1FC7F98A004891E6 /* Info.plist */,
 			);
 			path = zhikeTests;
@@ -262,7 +263,6 @@
 		C73921241FC7F98A004891E6 /* zhikeUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C73921251FC7F98B004891E6 /* zhikeUITests.m */,
 				C73921271FC7F98B004891E6 /* Info.plist */,
 			);
 			path = zhikeUITests;
@@ -337,6 +337,16 @@
 			children = (
 			);
 			path = ThirdLib;
+			sourceTree = "<group>";
+		};
+		C7918D822004B738008AF75A /* 找导师 */ = {
+			isa = PBXGroup;
+			children = (
+				C7918D882004B7F7008AF75A /* FindMentorVC.h */,
+				C7918D892004B7F7008AF75A /* FindMentorVC.m */,
+				C7918D8A2004B7F7008AF75A /* FindMentorVC.xib */,
+			);
+			name = "找导师";
 			sourceTree = "<group>";
 		};
 		C79971381FEA095F005D0B4D /* CatchCrash */ = {
@@ -510,6 +520,7 @@
 				C739210B1FC7F98A004891E6 /* Assets.xcassets in Resources */,
 				C7E040F31FEA6322005D2CC2 /* TeacherRecommendVC.xib in Resources */,
 				C73921521FC7FD56004891E6 /* QuestionViewController.xib in Resources */,
+				C7918D8C2004B7F7008AF75A /* FindMentorVC.xib in Resources */,
 				C739214D1FC7FD43004891E6 /* HomeViewController.xib in Resources */,
 				C72DB7C31FE4D632007822DD /* TableViewCell1.xib in Resources */,
 			);
@@ -587,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7918D8B2004B7F7008AF75A /* FindMentorVC.m in Sources */,
 				C73921381FC7FBD5004891E6 /* BaseTabBarController.m in Sources */,
 				C7E040EC1FEA6159005D2CC2 /* LatestAskViewController.m in Sources */,
 				C73921561FC7FD62004891E6 /* MineViewController.m in Sources */,
@@ -617,7 +629,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C739211B1FC7F98A004891E6 /* zhikeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +636,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C73921261FC7F98B004891E6 /* zhikeUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

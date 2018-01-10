@@ -67,21 +67,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJo-hK-TcT">
+                <button opaque="NO" tag="110" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJo-hK-TcT">
                     <rect key="frame" x="0.0" y="16" width="125" height="50"/>
                     <state key="normal" image="daoshi"/>
                     <connections>
                         <action selector="subViewButtonAction:" destination="-1" eventType="touchUpInside" id="JJ3-bn-AGU"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAa-4d-bSM">
+                <button opaque="NO" tag="111" contentMode="scaleToFill" horizontalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAa-4d-bSM">
                     <rect key="frame" x="125" y="16" width="125" height="50"/>
                     <state key="normal" image="kuaiwen"/>
                     <connections>
                         <action selector="subViewButtonAction:" destination="-1" eventType="touchUpInside" id="gax-Yd-WJw"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="752" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-dP-T3d">
+                <button opaque="NO" tag="112" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="752" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lT-dP-T3d">
                     <rect key="frame" x="250" y="16" width="125" height="50"/>
                     <state key="normal" image="jingxuan"/>
                     <connections>

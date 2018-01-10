@@ -57,89 +57,60 @@
     return strTest;
 }
 
+//根据文字，排版按钮。
+- (void)view:(UIView *)view makeTextButtonWithArray:(NSArray *)array{
+    //然后加载到搜索页的View上。
+    int x = 15;
+    int y = 40;
+    int interval = 10;//间隔
+    int tempX = x;
+    for (int i = 0; i < array.count; i ++) {
+        NSString *title = array[i];//[@"keyword"];
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setTitle:title forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        [button addTarget:self action:@selector(toSearchResults:) forControlEvents:UIControlEventTouchUpInside];
+        
+        //setBackground
+        UIImage *ima = [UIImage imageNamed:@"2-5_keywords-bg"];
+        ima = [ima stretchableImageWithLeftCapWidth:3 topCapHeight:10];
+        [button setBackgroundImage:ima forState:UIControlStateNormal];
+        
+        //setFrame
+        CGFloat buttonWidth = [title boundingRectWithSize:CGSizeMake(kScreenWidth, 400) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:14], NSFontAttributeName,nil] context:nil].size.width + 20;
+        if (tempX + buttonWidth + 15 >= kScreenWidth) {
+            x = 15;
+            y += 40;
+            tempX = 15;
+        }else if (i != 0){
+            x = tempX;
+        }
+        tempX += buttonWidth + interval;
+        
+        button.frame = CGRectMake(x, y, buttonWidth, 33);
+        [view addSubview:button];
+    }
+}
+
 //搜索热词接口
 - (void)getSearchHotWord{
     NSString *url = [NSString stringWithFormat:@"%@searchhotword.php",SERVER_IP];
     DBLOG(@"请求路径：%@",url);
     
     [ZBNetworking getWithUrl:url cache:NO params:nil progressBlock:nil successBlock:^(id response) {
-        //        NSLog(@"%@",response);
+//        NSLog(@"%@",response);
         NSArray *data = response[@"data"];
         if (data.count == 0) {
             return;
         }
-        
-        //然后加载到搜索页的View上。
-        int x = 15;
-        int y = 40;
-        int interval = 10;//间隔
-        int tempX = x;
-        for (int i = 0; i < 10; i ++) {
-            NSString *title = data[i][@"keyword"];
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [button setTitle:title forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:14];
-            [button addTarget:self action:@selector(toSearchResults:) forControlEvents:UIControlEventTouchUpInside];
-            button.tag = [data[i][@"id"] integerValue];
-            
-            //setBackground
-            UIImage *ima = [UIImage imageNamed:@"2-5_keywords-bg"];
-            ima = [ima stretchableImageWithLeftCapWidth:3 topCapHeight:10];
-            [button setBackgroundImage:ima forState:UIControlStateNormal];
-            
-            //setFrame
-            CGFloat buttonWidth = [title boundingRectWithSize:CGSizeMake(kScreenWidth, 400) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:14], NSFontAttributeName,nil] context:nil].size.width + 20;
-            if (tempX + buttonWidth + interval + 15 > kScreenWidth) {
-                x = 15;
-                y += 40;
-                tempX = 15;
-            }else if (i != 0){
-                x = tempX;
-            }
-            tempX += buttonWidth + interval;
-            
-            button.frame = CGRectMake(x, y, buttonWidth, 33);
-            [self.subView addSubview:button];
-        }
+        [self view:self.subView makeTextButtonWithArray:data];
     } failBlock:^(NSError *error) {
-        //        DBLOG(@"%@",error);
+//        DBLOG(@"%@",error);
         //测试数据
         NSArray *dataArray = @[@"王思聪",@"何洁",@"周杰伦",@"慕容晓晓",@"邓紫棋",@"小燕子",@"赵薇",@"马云",@"岳云鹏"];
-        //然后加载到搜索页的View上。
-        int x = 15;
-        int y = 50;
-        int interval = 10;//间隔
-        int tempX = x;
-        for (int i = 0; i < dataArray.count; i ++) {
-            NSString *title = dataArray[i];//data[i][@"keyword"];
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [button setTitle:title forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:14];
-            [button addTarget:self action:@selector(toSearchResults:) forControlEvents:UIControlEventTouchUpInside];
-            
-            //setBackground
-            UIImage *ima = [UIImage imageNamed:@"2-5_keywords-bg"];
-            ima = [ima stretchableImageWithLeftCapWidth:3 topCapHeight:10];
-            [button setBackgroundImage:ima forState:UIControlStateNormal];
-            
-            //setFrame
-            CGFloat buttonWidth = [title boundingRectWithSize:CGSizeMake(kScreenWidth, 400) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:14], NSFontAttributeName,nil] context:nil].size.width + 20;
-            if (tempX + buttonWidth + interval + 15 > kScreenWidth) {
-                x = 15;
-                y += 40;
-                tempX = 15;
-            }else if (i != 0){
-                x = tempX;
-            }
-            tempX += buttonWidth + interval;
-            
-            button.frame = CGRectMake(x, y, buttonWidth, 33);
-            [self.subView addSubview:button];
-        }
+        [self view:self.subView makeTextButtonWithArray:dataArray];
     }];
 }
 
