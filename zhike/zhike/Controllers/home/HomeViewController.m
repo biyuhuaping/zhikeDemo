@@ -91,7 +91,6 @@
     self.searchController.searchBar.placeholder = @"搜索";
     self.searchController.dimsBackgroundDuringPresentation = NO;//搜索时，背景变暗色
     self.searchController.searchBar.tintColor = UIColorWithRGB(0x16A101);//包着搜索框外层的颜色
-
     
     self.searchVC.nav = self.navigationController;
     self.searchVC.searchBar = self.searchController.searchBar;

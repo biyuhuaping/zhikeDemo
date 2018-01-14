@@ -350,13 +350,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zhike/Tools/ZBNetworking/ZBNetworking.m"
-            timestampString = "537092580.562155"
+            filePath = "zhike/Controllers/home/SearchViewController.m"
+            timestampString = "537617782.171744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-getWithUrl:cache:params:progressBlock:successBlock:failBlock:"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-nextViewController:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

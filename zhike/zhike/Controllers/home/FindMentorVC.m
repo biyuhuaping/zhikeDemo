@@ -112,7 +112,7 @@
     return 3;//3组
 }
 
-//设置区域的行数
+//行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 2) {
         return 10;

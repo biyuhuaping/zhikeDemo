@@ -28,27 +28,27 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欧成效 | 果壳网副总裁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w11-Ad-r2z">
-                        <rect key="frame" x="60" y="19" width="150.5" height="18"/>
+                        <rect key="frame" x="60" y="16" width="150.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1104个回答" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-Xg-jbN">
-                        <rect key="frame" x="60" y="38" width="78.5" height="18"/>
+                        <rect key="frame" x="60" y="41" width="78.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="68119人关注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nck-bM-ILE">
-                        <rect key="frame" x="158.5" y="38" width="87.5" height="18"/>
+                        <rect key="frame" x="158.5" y="41" width="87.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPu-0k-mVV">
-                        <rect key="frame" x="263" y="24.5" width="42" height="26"/>
+                        <rect key="frame" x="255" y="24.5" width="50" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="42" id="S1Y-0p-mkK"/>
+                            <constraint firstAttribute="width" constant="50" id="S1Y-0p-mkK"/>
                             <constraint firstAttribute="height" constant="26" id="XyZ-AE-pcd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -67,9 +67,9 @@
                     <constraint firstItem="w11-Ad-r2z" firstAttribute="leading" secondItem="In1-rX-1oG" secondAttribute="trailing" constant="8" id="G5Z-Rl-eCt"/>
                     <constraint firstItem="nck-bM-ILE" firstAttribute="leading" secondItem="qOS-Xg-jbN" secondAttribute="trailing" constant="20" id="K22-TX-EAo"/>
                     <constraint firstAttribute="trailing" secondItem="DPu-0k-mVV" secondAttribute="trailing" constant="15" id="Tqy-ML-MI6"/>
-                    <constraint firstItem="w11-Ad-r2z" firstAttribute="top" secondItem="In1-rX-1oG" secondAttribute="top" id="mdr-YN-qNJ"/>
+                    <constraint firstItem="w11-Ad-r2z" firstAttribute="top" secondItem="In1-rX-1oG" secondAttribute="top" constant="-3" id="mdr-YN-qNJ"/>
                     <constraint firstItem="qOS-Xg-jbN" firstAttribute="leading" secondItem="In1-rX-1oG" secondAttribute="trailing" constant="8" id="puT-DC-bdU"/>
-                    <constraint firstItem="qOS-Xg-jbN" firstAttribute="bottom" secondItem="In1-rX-1oG" secondAttribute="bottom" id="vMh-bo-qaS"/>
+                    <constraint firstItem="qOS-Xg-jbN" firstAttribute="bottom" secondItem="In1-rX-1oG" secondAttribute="bottom" constant="3" id="vMh-bo-qaS"/>
                     <constraint firstItem="DPu-0k-mVV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zcP-CU-Mfl"/>
                 </constraints>
             </tableViewCellContentView>

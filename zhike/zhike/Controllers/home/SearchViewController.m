@@ -7,6 +7,9 @@
 //
 
 #import "SearchViewController.h"
+#import "TeacherRecommendVC.h"
+#import "TableViewCell2.h"
+#import "QuestionTableViewCell.h"
 
 @interface SearchViewController ()
 
@@ -44,6 +47,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//- (void)viewWillAppear:(BOOL)animated{
+//    self.tabBarController.view.hidden = YES;
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated{
+//    self.tabBarController.view.hidden = NO;
+//}
 
 //产生3个随机字母
 - (NSString *)shuffledAlphabet {
@@ -116,10 +127,22 @@
 
 //搜索、热词
 - (void)toSearchResults:(UIButton *)sender{
+    DBLOG(@"我要去 %@ 页面",sender.titleLabel.text);
 //    SearchResultsCtrl *searchResult = [[SearchResultsCtrl alloc]initWithNibName:@"SearchResultsCtrl" bundle:nil];
 //    searchResult.keyStr = sender.titleLabel.text;//送妈妈
 //    searchResult.title = sender.titleLabel.text;
-//    [self.navigationController pushViewController:searchResult animated:YES];
+//    [self.nav pushViewController:searchResult animated:YES];
+}
+
+//点击查看更多 push 到对应页面
+- (void)nextViewController:(UIButton *)sender{
+//    if (sender.tag == 10) {
+//        LatestAskViewController *latestVC = [[LatestAskViewController alloc]initWithNibName:@"LatestAskViewController" bundle:nil];
+//        [self.nav pushViewController:latestVC animated:YES];
+//    }else{
+        TeacherRecommendVC *teacherVC = [[TeacherRecommendVC alloc]initWithNibName:@"TeacherRecommendVC" bundle:nil];
+        [self.nav pushViewController:teacherVC animated:YES];
+//    }
 }
 
 #pragma mark - tableView
@@ -127,28 +150,76 @@
     [self.searchBar resignFirstResponder];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return self.searchList.count > 0 ? 44 : 200;
+//header高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return self.searchList.count > 0?44:0;
 }
 
+//自适应高
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewAutomaticDimension;
+}
+
+//组数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.searchList.count > 0?2:1;//2组
+}
+
+//行高
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.section) {
+        case 0:{
+            return 75;
+        } break;
+        case 1:{
+            return 100;
+        } break;
+    }
+    return 0;
+}
+
+//行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger i = self.searchList.count > 0 ? self.searchList.count : 1;
+    NSInteger i = self.searchList.count > 0 ? 3 : 1;
     NSLog(@"tableCell行数 = %ld",i);
     return i;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.searchList.count > 0) {
-        static NSString *identifier = @"cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+//section header view
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)] ;
+    customView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 200.0, 44)] ;
+    headerLabel.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont systemFontOfSize:14];
+    [customView addSubview:headerLabel];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(kScreenWidth-80, 0, 80, 44);
+    button.titleLabel.font = [UIFont systemFontOfSize:12];
+//    button.backgroundColor = [UIColor redColor];
+    [button setTitle:@" 看更多 >" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(nextViewController:) forControlEvents:UIControlEventTouchUpInside];
+    [customView addSubview:button];
+    
+    switch (section) {
+        case 0:{
+            headerLabel.text = @"导师";
+            button.tag = 10;
         }
-        cell.textLabel.text = self.searchList[indexPath.row];
-        cell.textLabel.textColor = [UIColor redColor];
-        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        return cell;
-    }else{
+            break;
+        case 1:{
+            headerLabel.text = @"问题";
+        }
+            break;
+    }
+    return customView;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.searchList.count == 0) {
         static NSString *identifier = @"subViewCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
@@ -158,6 +229,26 @@
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [cell.contentView addSubview:self.subView];
         return cell;
+    }else{
+        switch (indexPath.section) {
+            case 0:{
+                static NSString *identifier = @"cell3";
+                TableViewCell2 *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+                if (!cell) {
+                    cell = [[NSBundle mainBundle]loadNibNamed:@"TableViewCell2" owner:self options:nil][0];
+                }
+                return cell;
+            }
+            case 1:{//分组1
+                static NSString *identifier = @"QuestionTableViewCell";
+                QuestionTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+                if (!cell) {
+                    cell = [[NSBundle mainBundle]loadNibNamed:@"QuestionTableViewCell" owner:self options:nil][0];
+                }
+                return cell;
+            }
+        }
+        return nil;
     }
 }
 

@@ -26,5 +26,17 @@
 
 - (IBAction)followButton:(id)sender {
     NSLog(@"点击了关注按钮");
+    if ([self.btn.titleLabel.text isEqualToString:@"关注"]) {
+        [_btn setTitle:@"已关注" forState:UIControlStateNormal];
+        [_btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        _btn.layer.borderColor = [UIColor clearColor].CGColor;
+    }else if ([self.btn.titleLabel.text isEqualToString:@"已关注"]){
+        [_btn setTitle:@"关注" forState:UIControlStateNormal];
+        [_btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        _btn.layer.borderWidth = 1;
+        _btn.layer.cornerRadius = 4;
+        _btn.layer.borderColor = [UIColor redColor].CGColor;
+    }
 }
+
 @end

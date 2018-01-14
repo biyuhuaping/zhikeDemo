@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jip-gF-Mlh">
-                    <rect key="frame" x="0.0" y="-6" width="375" height="673"/>
+                    <rect key="frame" x="0.0" y="17" width="375" height="650"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="zwr-rk-oeQ"/>
@@ -31,11 +32,12 @@
                 </tableView>
             </subviews>
             <constraints>
-                <constraint firstItem="jip-gF-Mlh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-6" id="CrT-qd-huu"/>
-                <constraint firstAttribute="trailing" secondItem="jip-gF-Mlh" secondAttribute="trailing" id="Dbz-pS-j36"/>
-                <constraint firstAttribute="bottom" secondItem="jip-gF-Mlh" secondAttribute="bottom" id="XqC-jg-p0o"/>
-                <constraint firstItem="jip-gF-Mlh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="odO-yQ-ZfV"/>
+                <constraint firstItem="jip-gF-Mlh" firstAttribute="bottom" secondItem="R5y-Ae-4rU" secondAttribute="bottom" id="92c-to-gCx"/>
+                <constraint firstItem="jip-gF-Mlh" firstAttribute="trailing" secondItem="R5y-Ae-4rU" secondAttribute="trailing" id="EkL-c5-lOZ"/>
+                <constraint firstItem="jip-gF-Mlh" firstAttribute="leading" secondItem="R5y-Ae-4rU" secondAttribute="leading" id="gUL-sB-WbH"/>
+                <constraint firstItem="R5y-Ae-4rU" firstAttribute="top" secondItem="jip-gF-Mlh" secondAttribute="top" constant="3" id="iaA-Xe-Ble"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="R5y-Ae-4rU"/>
         </view>
         <view contentMode="scaleToFill" id="qeg-uB-bFe">
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -54,6 +56,7 @@
                 <constraint firstItem="DMT-ns-SPf" firstAttribute="top" secondItem="qeg-uB-bFe" secondAttribute="top" constant="20" id="aVu-nR-XN9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="9mP-Qj-fJy"/>
             <point key="canvasLocation" x="464.5" y="103"/>
         </view>
     </objects>

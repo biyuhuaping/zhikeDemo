@@ -28,6 +28,8 @@
 		C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */; };
 		C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */; };
 		C73921971FD15482004891E6 /* ZBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921961FD15482004891E6 /* ZBTabBar.m */; };
+		C770731F200B48DD00E8BD1A /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C770731D200B48DD00E8BD1A /* QuestionTableViewCell.m */; };
+		C7707320200B48DD00E8BD1A /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C770731E200B48DD00E8BD1A /* QuestionTableViewCell.xib */; };
 		C77C9FF41FDF66EB003210F3 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C77C9FF21FDF66EB003210F3 /* SearchViewController.m */; };
 		C77C9FF51FDF66EB003210F3 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77C9FF31FDF66EB003210F3 /* SearchViewController.xib */; };
 		C7918D8B2004B7F7008AF75A /* FindMentorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7918D892004B7F7008AF75A /* FindMentorVC.m */; };
@@ -107,6 +109,9 @@
 		C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBUrlArgumentFilter.m; sourceTree = "<group>"; };
 		C73921951FD15482004891E6 /* ZBTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBTabBar.h; sourceTree = "<group>"; };
 		C73921961FD15482004891E6 /* ZBTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBTabBar.m; sourceTree = "<group>"; };
+		C770731C200B48DD00E8BD1A /* QuestionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
+		C770731D200B48DD00E8BD1A /* QuestionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
+		C770731E200B48DD00E8BD1A /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
 		C77C9FF11FDF66EB003210F3 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		C77C9FF21FDF66EB003210F3 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		C77C9FF31FDF66EB003210F3 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -181,6 +186,9 @@
 		C72DB7BD1FE4D4EC007822DD /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				C770731C200B48DD00E8BD1A /* QuestionTableViewCell.h */,
+				C770731D200B48DD00E8BD1A /* QuestionTableViewCell.m */,
+				C770731E200B48DD00E8BD1A /* QuestionTableViewCell.xib */,
 				C77C9FF11FDF66EB003210F3 /* SearchViewController.h */,
 				C77C9FF21FDF66EB003210F3 /* SearchViewController.m */,
 				C77C9FF31FDF66EB003210F3 /* SearchViewController.xib */,
@@ -521,6 +529,7 @@
 				C7E040F31FEA6322005D2CC2 /* TeacherRecommendVC.xib in Resources */,
 				C73921521FC7FD56004891E6 /* QuestionViewController.xib in Resources */,
 				C7918D8C2004B7F7008AF75A /* FindMentorVC.xib in Resources */,
+				C7707320200B48DD00E8BD1A /* QuestionTableViewCell.xib in Resources */,
 				C739214D1FC7FD43004891E6 /* HomeViewController.xib in Resources */,
 				C72DB7C31FE4D632007822DD /* TableViewCell1.xib in Resources */,
 			);
@@ -609,6 +618,7 @@
 				C7B673D21FD63EB700C2CA0E /* ZBMemoryCache.m in Sources */,
 				C73921511FC7FD56004891E6 /* QuestionViewController.m in Sources */,
 				C72DB7C21FE4D632007822DD /* TableViewCell1.m in Sources */,
+				C770731F200B48DD00E8BD1A /* QuestionTableViewCell.m in Sources */,
 				C72DB7C71FE4D64C007822DD /* TableViewCell2.m in Sources */,
 				C739217A1FCD3515004891E6 /* User.m in Sources */,
 				C739218A1FCFE5E9004891E6 /* RegisterModel.m in Sources */,
