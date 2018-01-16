@@ -38,6 +38,7 @@
                 <constraint firstItem="R5y-Ae-4rU" firstAttribute="top" secondItem="jip-gF-Mlh" secondAttribute="top" constant="3" id="iaA-Xe-Ble"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="R5y-Ae-4rU"/>
+            <point key="canvasLocation" x="-644" y="-690"/>
         </view>
         <view contentMode="scaleToFill" id="qeg-uB-bFe">
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -57,7 +58,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="9mP-Qj-fJy"/>
-            <point key="canvasLocation" x="464.5" y="103"/>
+            <point key="canvasLocation" x="-194" y="-670"/>
         </view>
     </objects>
 </document>

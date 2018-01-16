@@ -81,6 +81,14 @@
 
 - (void)centerTabBarClick:(UIButton *)btn{
     NSLog(@"点击了中间");
+    //果冻动画
+    CAKeyframeAnimation *kf = [[CAKeyframeAnimation alloc]init];
+    [kf setKeyPath:@"transform.scale"];
+    kf.values = @[@1.0, @0.7, @0.5, @0.3, @0.5, @0.7, @1.0, @1.2, @1.4, @1.2, @1.0];
+    kf.keyTimes = @[@0.0, @0.1, @0.2, @0.3, @0.4, @0.5, @0.6, @0.7, @0.8, @0.9, @1.0];
+    kf.duration = 0.2;
+    [btn.layer addAnimation:kf forKey:@"Show"];
+    
 //    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"点击了中间按钮" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 //    [alert show];
     QuestionViewController *question = [[QuestionViewController alloc]initWithNibName:@"QuestionViewController" bundle:nil];
