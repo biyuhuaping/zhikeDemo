@@ -67,19 +67,11 @@
     if (data == nil) {
         return;//如果没有崩溃日志，就return
     }
-    
-    NSString *url = @"http://p190ktt6s.bkt.clouddn.com/Exception.txt";
-    [ZBNetworking getWithUrl:url cache:NO params:nil progressBlock:nil successBlock:^(id response) {
-        DBLOG(@"下载成功\n%@",response);
-        id json = [NSJSONSerialization JSONObjectWithData:(NSData *)response options:NSJSONReadingMutableLeaves|NSJSONReadingMutableContainers error:nil];
-        DBLOG(@"json:%@",json);
-    } failBlock:^(NSError *error) {
-        DBLOG(@"下载失败%@",error.userInfo);
-    }];
 
     NSString *uploadURL = @"http://p190ktt6s.bkt.clouddn.com/";
     [ZBNetworking uploadFileWithUrl:uploadURL fileData:data name:@"file" fileName:@"error.log" mimeType:@"txt" progressBlock:nil successBlock:^(id response) {
         DBLOG(@"日志上传成功");
+        //上传成功后，要删除本地日志
     } failBlock:^(NSError *error) {
         DBLOG(@"日志上传失败%@",error.userInfo);
     }];
