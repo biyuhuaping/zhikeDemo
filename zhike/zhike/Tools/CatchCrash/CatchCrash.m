@@ -10,7 +10,7 @@
 
 @implementation CatchCrash
 
-+ (void)initialize{
++ (void)load{
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 }
 

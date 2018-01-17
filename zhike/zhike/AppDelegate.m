@@ -11,6 +11,7 @@
 #import <YTKNetwork.h>
 #import "ZBUrlArgumentFilter.h"
 #import "CatchCrash.h"
+#import <OpenShare/OpenShareHeader.h>
 
 @interface AppDelegate ()
 @property (strong, nonatomic) BaseTabBarController *tabBarController;
@@ -26,22 +27,24 @@
     [self.window makeKeyAndVisible];
 
     [self showTabbarController];
-    [self setupRequestFilters];
-    
-    
-    //注册消息处理函数的处理方法
-//    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-    //发送崩溃日志
-    NSString *path = [NSString stringWithFormat:@"%@/Documents/error.log",NSHomeDirectory()];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    if (data != nil) {
-        [self sendExceptionLogWithData:data];
-    }
+    [self configRequestFilters];
+    [self configOpenShare];
+    [self sendExceptionLog];
     
     return YES;
 }
 
-- (void)setupRequestFilters {
+//配置OpenShare
+- (void)configOpenShare{
+    //全局注册appId，别忘了#import "OpenShareHeader.h"
+    [OpenShare connectQQWithAppId:@"1103194207"];
+    [OpenShare connectWeiboWithAppKey:@"402180334"];
+    [OpenShare connectWeixinWithAppId:@"wxd930ea5d5a258f4f"];
+    [OpenShare connectRenrenWithAppId:@"228525" AndAppKey:@"1dd8cba4215d4d4ab96a49d3058c1d7f"];
+}
+
+//配置请求
+- (void)configRequestFilters {
 //    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
     config.baseUrl = @"https://news-at.zhihu.com";
@@ -58,7 +61,13 @@
 }
 
 #pragma mark - 发送崩溃日志
-- (void)sendExceptionLogWithData:(NSData *)data{
+- (void)sendExceptionLog{
+    NSString *path = [NSString stringWithFormat:@"%@/Documents/error.log",NSHomeDirectory()];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    if (data == nil) {
+        return;//如果没有崩溃日志，就return
+    }
+    
     NSString *url = @"http://p190ktt6s.bkt.clouddn.com/Exception.txt";
     [ZBNetworking getWithUrl:url cache:NO params:nil progressBlock:nil successBlock:^(id response) {
         DBLOG(@"下载成功\n%@",response);
