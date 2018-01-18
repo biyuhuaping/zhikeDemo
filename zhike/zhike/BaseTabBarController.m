@@ -7,8 +7,8 @@
 //
 
 #import "BaseTabBarController.h"
-#import "BaseNavigationController.h"
 #import "ZBTabBar.h"
+#import "AppDelegate.h"
 
 #import "HomeViewController.h"
 #import "QuestionViewController.h"
@@ -112,6 +112,13 @@
  */
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     NSLog(@"%ld",self.selectedIndex);
+    if (self.selectedIndex == 1){
+        if (1){
+            AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [delegate showTabbarController];
+//            [tabBarController setSelectedIndex:0];
+        }
+    }
 }
 
 @end

@@ -11,7 +11,7 @@ pod 'SDWebImage','~>4.0.0'
 #pod 'YYModel', '~> 1.0.4'
 #pod 'MyLayout', '~> 1.5.0'
 #pod 'YTKKeyValueStore', '~> 0.1.2'
-pod 'MLeaksFinder', '~> 0.2.1'      #检测内存泄漏
+#pod 'MLeaksFinder', '~> 0.2.1'      #检测内存泄漏
 #pod 'AsyncDisplayKit', '~> 2.1'    #优化速度
 #pod 'CocoaLumberjack','~> 3.2.1'   #log日志
 #pod 'pop'

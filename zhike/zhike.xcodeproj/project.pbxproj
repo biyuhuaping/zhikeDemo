@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7082F4F20102A4400A77B87 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7082F4D20102A4400A77B87 /* LoginViewController.m */; };
+		C7082F5020102A4400A77B87 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7082F4E20102A4400A77B87 /* LoginViewController.xib */; };
+		C7082F652010757900A77B87 /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7082F532010757800A77B87 /* UMSocialSDKResources.bundle */; };
+		C7082F662010757900A77B87 /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F542010757800A77B87 /* UShareUI.framework */; };
+		C7082F672010757900A77B87 /* UMSocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F562010757800A77B87 /* UMSocialNetwork.framework */; };
+		C7082F682010757900A77B87 /* UMSocialSDKPromptResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7082F572010757800A77B87 /* UMSocialSDKPromptResources.bundle */; };
+		C7082F692010757900A77B87 /* UMSocialCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F582010757800A77B87 /* UMSocialCore.framework */; };
+		C7082F6A2010757900A77B87 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F5B2010757800A77B87 /* libSocialWeChat.a */; };
+		C7082F6B2010757900A77B87 /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F5E2010757800A77B87 /* libSocialSina.a */; };
+		C7082F6C2010757900A77B87 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F622010757800A77B87 /* libSocialQQ.a */; };
+		C7082F6D2010757900A77B87 /* libUMSocialLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F642010757800A77B87 /* libUMSocialLog.a */; };
+		C7082F6F2010767600A77B87 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F6E2010767500A77B87 /* libsqlite3.tbd */; };
+		C7082F712010768200A77B87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7082F702010768200A77B87 /* CoreGraphics.framework */; };
 		C72DB7C21FE4D632007822DD /* TableViewCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = C72DB7C01FE4D632007822DD /* TableViewCell1.m */; };
 		C72DB7C31FE4D632007822DD /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72DB7C11FE4D632007822DD /* TableViewCell1.xib */; };
 		C72DB7C71FE4D64C007822DD /* TableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = C72DB7C51FE4D64C007822DD /* TableViewCell2.m */; };
@@ -67,6 +80,23 @@
 /* Begin PBXFileReference section */
 		871304D3C206358966AD6A85 /* libPods-zhike.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zhike.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8918B24BB3E171BD9FBD7726 /* Pods-zhike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhike.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zhike/Pods-zhike.debug.xcconfig"; sourceTree = "<group>"; };
+		C7082F4C20102A4400A77B87 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C7082F4D20102A4400A77B87 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C7082F4E20102A4400A77B87 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C7082F532010757800A77B87 /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
+		C7082F542010757800A77B87 /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
+		C7082F562010757800A77B87 /* UMSocialNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialNetwork.framework; sourceTree = "<group>"; };
+		C7082F572010757800A77B87 /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
+		C7082F582010757800A77B87 /* UMSocialCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialCore.framework; sourceTree = "<group>"; };
+		C7082F5B2010757800A77B87 /* libSocialWeChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWeChat.a; sourceTree = "<group>"; };
+		C7082F5C2010757800A77B87 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		C7082F5E2010757800A77B87 /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
+		C7082F5F2010757800A77B87 /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSinaHandler.h; sourceTree = "<group>"; };
+		C7082F612010757800A77B87 /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
+		C7082F622010757800A77B87 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
+		C7082F642010757800A77B87 /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
+		C7082F6E2010767500A77B87 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C7082F702010768200A77B87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C72DB7BF1FE4D632007822DD /* TableViewCell1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell1.h; sourceTree = "<group>"; };
 		C72DB7C01FE4D632007822DD /* TableViewCell1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell1.m; sourceTree = "<group>"; };
 		C72DB7C11FE4D632007822DD /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
@@ -144,7 +174,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7082F712010768200A77B87 /* CoreGraphics.framework in Frameworks */,
+				C7082F6F2010767600A77B87 /* libsqlite3.tbd in Frameworks */,
+				C7082F692010757900A77B87 /* UMSocialCore.framework in Frameworks */,
+				C7082F6A2010757900A77B87 /* libSocialWeChat.a in Frameworks */,
+				C7082F662010757900A77B87 /* UShareUI.framework in Frameworks */,
 				E4D351EFFCD44DD600E7F4A4 /* libPods-zhike.a in Frameworks */,
+				C7082F672010757900A77B87 /* UMSocialNetwork.framework in Frameworks */,
+				C7082F6D2010757900A77B87 /* libUMSocialLog.a in Frameworks */,
+				C7082F6C2010757900A77B87 /* libSocialQQ.a in Frameworks */,
+				C7082F6B2010757900A77B87 /* libSocialSina.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,10 +216,97 @@
 		3620B1B4B5C6F2717BEE1721 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7082F702010768200A77B87 /* CoreGraphics.framework */,
+				C7082F6E2010767500A77B87 /* libsqlite3.tbd */,
 				C72DB7C91FE79D50007822DD /* WebKit.framework */,
 				871304D3C206358966AD6A85 /* libPods-zhike.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C7082F4B20102A2100A77B87 /* welcome */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F4C20102A4400A77B87 /* LoginViewController.h */,
+				C7082F4D20102A4400A77B87 /* LoginViewController.m */,
+				C7082F4E20102A4400A77B87 /* LoginViewController.xib */,
+			);
+			path = welcome;
+			sourceTree = "<group>";
+		};
+		C7082F512010757800A77B87 /* UMSocial */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F522010757800A77B87 /* UMSocialUI */,
+				C7082F552010757800A77B87 /* UMSocialSDK */,
+				C7082F592010757800A77B87 /* SocialLibraries */,
+				C7082F632010757800A77B87 /* UMSocialSDKPlugin */,
+			);
+			path = UMSocial;
+			sourceTree = "<group>";
+		};
+		C7082F522010757800A77B87 /* UMSocialUI */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F532010757800A77B87 /* UMSocialSDKResources.bundle */,
+				C7082F542010757800A77B87 /* UShareUI.framework */,
+			);
+			path = UMSocialUI;
+			sourceTree = "<group>";
+		};
+		C7082F552010757800A77B87 /* UMSocialSDK */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F562010757800A77B87 /* UMSocialNetwork.framework */,
+				C7082F572010757800A77B87 /* UMSocialSDKPromptResources.bundle */,
+				C7082F582010757800A77B87 /* UMSocialCore.framework */,
+			);
+			path = UMSocialSDK;
+			sourceTree = "<group>";
+		};
+		C7082F592010757800A77B87 /* SocialLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F5A2010757800A77B87 /* WeChat */,
+				C7082F5D2010757800A77B87 /* Sina */,
+				C7082F602010757800A77B87 /* QQ */,
+			);
+			path = SocialLibraries;
+			sourceTree = "<group>";
+		};
+		C7082F5A2010757800A77B87 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F5B2010757800A77B87 /* libSocialWeChat.a */,
+				C7082F5C2010757800A77B87 /* UMSocialWechatHandler.h */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		C7082F5D2010757800A77B87 /* Sina */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F5E2010757800A77B87 /* libSocialSina.a */,
+				C7082F5F2010757800A77B87 /* UMSocialSinaHandler.h */,
+			);
+			path = Sina;
+			sourceTree = "<group>";
+		};
+		C7082F602010757800A77B87 /* QQ */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F612010757800A77B87 /* UMSocialQQHandler.h */,
+				C7082F622010757800A77B87 /* libSocialQQ.a */,
+			);
+			path = QQ;
+			sourceTree = "<group>";
+		};
+		C7082F632010757800A77B87 /* UMSocialSDKPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				C7082F642010757800A77B87 /* libUMSocialLog.a */,
+			);
+			path = UMSocialSDKPlugin;
 			sourceTree = "<group>";
 		};
 		C72DB7BD1FE4D4EC007822DD /* SearchView */ = {
@@ -283,6 +409,7 @@
 				C73921791FCD3515004891E6 /* User.m */,
 				C73921881FCFE5E9004891E6 /* RegisterModel.h */,
 				C73921891FCFE5E9004891E6 /* RegisterModel.m */,
+				C7082F4B20102A2100A77B87 /* welcome */,
 				C77C9FD81FDE1E63003210F3 /* home */,
 				C77C9FDA1FDE1EA3003210F3 /* question */,
 				C77C9FD91FDE1E86003210F3 /* mine */,
@@ -343,6 +470,7 @@
 		C7847C80200360E700F2434B /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				C7082F512010757800A77B87 /* UMSocial */,
 			);
 			path = ThirdLib;
 			sourceTree = "<group>";
@@ -525,10 +653,13 @@
 				C7E040ED1FEA6159005D2CC2 /* LatestAskViewController.xib in Resources */,
 				C77C9FF51FDF66EB003210F3 /* SearchViewController.xib in Resources */,
 				C72DB7C81FE4D64C007822DD /* TableViewCell2.xib in Resources */,
+				C7082F652010757900A77B87 /* UMSocialSDKResources.bundle in Resources */,
 				C739210B1FC7F98A004891E6 /* Assets.xcassets in Resources */,
 				C7E040F31FEA6322005D2CC2 /* TeacherRecommendVC.xib in Resources */,
 				C73921521FC7FD56004891E6 /* QuestionViewController.xib in Resources */,
 				C7918D8C2004B7F7008AF75A /* FindMentorVC.xib in Resources */,
+				C7082F682010757900A77B87 /* UMSocialSDKPromptResources.bundle in Resources */,
+				C7082F5020102A4400A77B87 /* LoginViewController.xib in Resources */,
 				C7707320200B48DD00E8BD1A /* QuestionTableViewCell.xib in Resources */,
 				C739214D1FC7FD43004891E6 /* HomeViewController.xib in Resources */,
 				C72DB7C31FE4D632007822DD /* TableViewCell1.xib in Resources */,
@@ -609,6 +740,7 @@
 			files = (
 				C7918D8B2004B7F7008AF75A /* FindMentorVC.m in Sources */,
 				C73921381FC7FBD5004891E6 /* BaseTabBarController.m in Sources */,
+				C7082F4F20102A4400A77B87 /* LoginViewController.m in Sources */,
 				C7E040EC1FEA6159005D2CC2 /* LatestAskViewController.m in Sources */,
 				C73921561FC7FD62004891E6 /* MineViewController.m in Sources */,
 				C73921111FC7F98A004891E6 /* main.m in Sources */,
@@ -787,10 +919,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BNV27HH5PK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialSDK",
+				);
 				GCC_PREFIX_HEADER = zhike/PrefixHeader.pch;
 				INFOPLIST_FILE = zhike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialSDKPlugin",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.zhike;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -805,10 +949,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BNV27HH5PK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialSDK",
+				);
 				GCC_PREFIX_HEADER = zhike/PrefixHeader.pch;
 				INFOPLIST_FILE = zhike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialSDKPlugin",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.zhike;
 				PRODUCT_NAME = "$(TARGET_NAME)";

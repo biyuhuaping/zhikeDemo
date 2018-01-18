@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "BaseTabBarController.h"
+#import "LoginViewController.h"
+
 #import <YTKNetwork.h>
 #import "ZBUrlArgumentFilter.h"
 #import "CatchCrash.h"
@@ -55,9 +57,14 @@
 }
 
 - (void)showTabbarController{
+    NSLog(@"我来了！");
     self.tabBarController = [[BaseTabBarController alloc] init];
     self.window.rootViewController = self.tabBarController;
-    NSLog(@"我来了！");
+    if (1) {
+        LoginViewController *vc = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+        [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
+    }
 }
 
 #pragma mark - 发送崩溃日志
@@ -78,6 +85,14 @@
 }
 
 #pragma mark -
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation{
+    //如果OpenShare能处理这个回调，就调用block中的方法，如果不能处理，就交给其他（比如支付宝）。
+    if ([OpenShare handleOpenURL:url]) {
+        return YES;
+    }
+    return NO;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

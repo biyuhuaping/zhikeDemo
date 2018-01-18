@@ -47,7 +47,7 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;//不加的话，table会下移
     self.edgesForExtendedLayout = UIRectEdgeNone;//不加的话，UISearchBar返回后会上移
-
+    
     self.dataArray = [NSMutableArray new];
     self.banderImgArray = [NSMutableArray arrayWithCapacity:10];
     

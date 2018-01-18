@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,8 +19,59 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVO-0Q-HsJ">
+                    <rect key="frame" x="0.0" y="484" width="125" height="34"/>
+                    <state key="normal" title="微信登录"/>
+                    <connections>
+                        <action selector="WeixinAuth:" destination="-1" eventType="touchUpInside" id="Kdp-Qf-5w8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sam-Md-BpU">
+                    <rect key="frame" x="0.0" y="518" width="125" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="Wi2-eM-abQ"/>
+                    </constraints>
+                    <state key="normal" title="微信分享"/>
+                    <connections>
+                        <action selector="shareBtnTap:" destination="-1" eventType="touchUpInside" id="OZ6-4e-qRR"/>
+                        <action selector="weixinShare:" destination="-1" eventType="touchUpInside" id="rm3-2i-saN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2U-Sf-eWq">
+                    <rect key="frame" x="125" y="484" width="125" height="34"/>
+                    <state key="normal" title="支付宝登录"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnY-yg-V6p">
+                    <rect key="frame" x="250" y="484" width="125" height="34"/>
+                    <state key="normal" title="新浪登录"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxe-bt-8Qz">
+                    <rect key="frame" x="125" y="518" width="125" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="微信登录"/>
+                    <connections>
+                        <action selector="shareBtnTap:" destination="-1" eventType="touchUpInside" id="Ru3-hQ-3Mn"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="U2U-Sf-eWq" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" constant="-149" id="5w9-Fk-myX"/>
+                <constraint firstItem="Sam-Md-BpU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="N5l-W9-5O7"/>
+                <constraint firstItem="Sam-Md-BpU" firstAttribute="top" secondItem="aVO-0Q-HsJ" secondAttribute="bottom" id="NoC-Kq-HYW"/>
+                <constraint firstItem="U2U-Sf-eWq" firstAttribute="leading" secondItem="aVO-0Q-HsJ" secondAttribute="trailing" id="Qpf-ON-Nvr"/>
+                <constraint firstItem="aVO-0Q-HsJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="RQ3-A4-2O9"/>
+                <constraint firstItem="ZnY-yg-V6p" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" constant="-149" id="Sfp-R9-lOJ"/>
+                <constraint firstItem="ZnY-yg-V6p" firstAttribute="leading" secondItem="U2U-Sf-eWq" secondAttribute="trailing" id="aPI-ji-AXJ"/>
+                <constraint firstItem="aVO-0Q-HsJ" firstAttribute="width" secondItem="U2U-Sf-eWq" secondAttribute="width" id="abN-CU-Fcv"/>
+                <constraint firstItem="aVO-0Q-HsJ" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" constant="-149" id="fJR-am-I5n"/>
+                <constraint firstItem="U2U-Sf-eWq" firstAttribute="width" secondItem="ZnY-yg-V6p" secondAttribute="width" id="mP7-aQ-Jge"/>
+                <constraint firstItem="ZnY-yg-V6p" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="qgd-9i-82J"/>
+                <constraint firstItem="Sam-Md-BpU" firstAttribute="width" secondItem="aVO-0Q-HsJ" secondAttribute="width" id="uU8-XM-cJ7"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="33.5" y="80.5"/>
         </view>
     </objects>
 </document>
