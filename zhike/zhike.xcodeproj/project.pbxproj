@@ -53,6 +53,8 @@
 		C7B673D41FD63EB700C2CA0E /* ZBCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CB1FD63EB600C2CA0E /* ZBCacheManager.m */; };
 		C7B673D51FD63EB700C2CA0E /* ZBLRUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673CE1FD63EB600C2CA0E /* ZBLRUManager.m */; };
 		C7B673D61FD63EB700C2CA0E /* ZBNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B673D01FD63EB600C2CA0E /* ZBNetworking.m */; };
+		C7DB611020182FB600603FE1 /* BindingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DB610E20182FB600603FE1 /* BindingViewController.m */; };
+		C7DB611120182FB600603FE1 /* BindingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DB610F20182FB600603FE1 /* BindingViewController.xib */; };
 		C7E040EC1FEA6159005D2CC2 /* LatestAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E040EA1FEA6159005D2CC2 /* LatestAskViewController.m */; };
 		C7E040ED1FEA6159005D2CC2 /* LatestAskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E040EB1FEA6159005D2CC2 /* LatestAskViewController.xib */; };
 		C7E040F21FEA6322005D2CC2 /* TeacherRecommendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E040F01FEA6322005D2CC2 /* TeacherRecommendVC.m */; };
@@ -160,6 +162,9 @@
 		C7B673CF1FD63EB600C2CA0E /* ZBCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBCacheManager.h; sourceTree = "<group>"; };
 		C7B673D01FD63EB600C2CA0E /* ZBNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBNetworking.m; sourceTree = "<group>"; };
 		C7B673D11FD63EB600C2CA0E /* ZBNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBNetworking.h; sourceTree = "<group>"; };
+		C7DB610D20182FB600603FE1 /* BindingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingViewController.h; sourceTree = "<group>"; };
+		C7DB610E20182FB600603FE1 /* BindingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingViewController.m; sourceTree = "<group>"; };
+		C7DB610F20182FB600603FE1 /* BindingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindingViewController.xib; sourceTree = "<group>"; };
 		C7E040E91FEA6159005D2CC2 /* LatestAskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LatestAskViewController.h; sourceTree = "<group>"; };
 		C7E040EA1FEA6159005D2CC2 /* LatestAskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LatestAskViewController.m; sourceTree = "<group>"; };
 		C7E040EB1FEA6159005D2CC2 /* LatestAskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LatestAskViewController.xib; sourceTree = "<group>"; };
@@ -230,6 +235,9 @@
 				C7082F4C20102A4400A77B87 /* LoginViewController.h */,
 				C7082F4D20102A4400A77B87 /* LoginViewController.m */,
 				C7082F4E20102A4400A77B87 /* LoginViewController.xib */,
+				C7DB610D20182FB600603FE1 /* BindingViewController.h */,
+				C7DB610E20182FB600603FE1 /* BindingViewController.m */,
+				C7DB610F20182FB600603FE1 /* BindingViewController.xib */,
 			);
 			path = welcome;
 			sourceTree = "<group>";
@@ -652,6 +660,7 @@
 				C739210E1FC7F98A004891E6 /* LaunchScreen.storyboard in Resources */,
 				C7E040ED1FEA6159005D2CC2 /* LatestAskViewController.xib in Resources */,
 				C77C9FF51FDF66EB003210F3 /* SearchViewController.xib in Resources */,
+				C7DB611120182FB600603FE1 /* BindingViewController.xib in Resources */,
 				C72DB7C81FE4D64C007822DD /* TableViewCell2.xib in Resources */,
 				C7082F652010757900A77B87 /* UMSocialSDKResources.bundle in Resources */,
 				C739210B1FC7F98A004891E6 /* Assets.xcassets in Resources */,
@@ -760,6 +769,7 @@
 				C7B673D61FD63EB700C2CA0E /* ZBNetworking.m in Sources */,
 				C7E040F21FEA6322005D2CC2 /* TeacherRecommendVC.m in Sources */,
 				C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */,
+				C7DB611020182FB600603FE1 /* BindingViewController.m in Sources */,
 				C7B673D41FD63EB700C2CA0E /* ZBCacheManager.m in Sources */,
 				C739214C1FC7FD43004891E6 /* HomeViewController.m in Sources */,
 				C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */,
