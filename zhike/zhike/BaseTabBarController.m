@@ -40,14 +40,8 @@
     HomeViewController *home = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
     [self addChildViewController:home title:@"首页" imageNamed:imageArray[0] selectedImageName:selectedImageArray[0]];
     
-    
-//    QuestionViewController *question = [[QuestionViewController alloc]initWithNibName:@"QuestionViewController" bundle:nil];
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-//    view.backgroundColor = [UIColor redColor];
-//    [self addChildViewController:question title:@"第2" imageNamed:imageArray[1] selectedImageName:selectedImageArray[1]];
     [self addCustomtabbar];
 
-    
     MineViewController *min = [[MineViewController alloc]initWithNibName:@"MineViewController" bundle:nil];
     [self addChildViewController:min title:@"我的" imageNamed:imageArray[2] selectedImageName:selectedImageArray[2]];
 

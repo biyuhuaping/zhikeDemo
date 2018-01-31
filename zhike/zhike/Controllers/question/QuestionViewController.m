@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view from its nib.
     WKWebView *webView = [[WKWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     webView.navigationDelegate = self;//需要实现WKNavigationDelegate
-    [webView loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString:@"http://www.baidu.com"]]];
+    [webView loadRequest:[NSURLRequest requestWithURL: [NSURL URLWithString:@"http://www.zhikekeji.cn"]]];
     [self.view addSubview:webView];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissView)];

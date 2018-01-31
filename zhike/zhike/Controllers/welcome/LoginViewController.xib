@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
                 <outlet property="codeButton" destination="d2q-EZ-Qvf" id="Yyr-Bv-gEo"/>
+                <outlet property="label" destination="MGQ-ep-dbf" id="GKh-Qy-SgH"/>
                 <outlet property="lineHeight" destination="CD6-oh-Muc" id="tpm-zh-ZMS"/>
                 <outlet property="loginButton" destination="p2S-2O-Q72" id="29Z-Dn-Swn"/>
                 <outlet property="textField1" destination="Y5L-YS-9sK" id="uTr-fM-UeF"/>
@@ -32,17 +33,17 @@
                             <rect key="frame" x="15" y="10" width="265" height="24.5"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tpl-gZ-y0f">
                             <rect key="frame" x="15" y="55.5" width="345" height="24.5"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8v-ST-IwZ">
                             <rect key="frame" x="15" y="44.5" width="345" height="1"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="CD6-oh-Muc"/>
                             </constraints>
@@ -79,7 +80,7 @@
                         <constraint firstAttribute="trailing" secondItem="d2q-EZ-Qvf" secondAttribute="trailing" constant="15" id="zAE-2V-Rhj"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：未注册启职账号的手机号，登录时将自动注册，且代表您已同意《用户服务协议》" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGQ-ep-dbf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：未注册启职账号的手机号，登录时将自动注册，且代表您已同意《用户服务协议》" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGQ-ep-dbf" customClass="JPLabel">
                     <rect key="frame" x="15" y="140" width="345" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,7 +100,7 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5G-VV-GiS">
                     <rect key="frame" x="20" y="499" width="335" height="1"/>
-                    <color key="backgroundColor" red="0.66666668650000005" green="0.66666668650000005" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="bV5-n8-v0z"/>
                     </constraints>

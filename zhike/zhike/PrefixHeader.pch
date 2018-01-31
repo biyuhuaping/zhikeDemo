@@ -39,6 +39,9 @@
 #define UIColorWithRGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 
+#define GLOBALRED UIColorWithRGBA(238, 91, 73, 1)//全局红色
+
+
 //单例
 #define DEFINE_SINGLETON_FOR_HEADER(className) \
 \

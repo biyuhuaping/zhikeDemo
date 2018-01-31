@@ -9,6 +9,10 @@
 #import "LoginViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "BindingViewController.h"
+#import "OpenShareHeader.h"
+#import "JPLabel.h"
+
+#import "WebViewController.h"
 
 @interface LoginViewController ()
 
@@ -17,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *codeButton;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *lineHeight;
+@property (weak, nonatomic) IBOutlet JPLabel *label;
 
 @end
 
@@ -32,6 +37,14 @@
     self.codeButton.layer.cornerRadius = 4;
     self.loginButton.layer.cornerRadius = 4;
     self.lineHeight.constant = 0.5;
+    
+    self.label.jp_matchArr = @[@{@"string" : @"《用户服务协议》",@"color" : GLOBALRED}];
+    self.label.jp_tapOperation = ^(UILabel *label, HandleStyle style, NSString *selectedString, NSRange range){
+        NSLog(@"block打印 %@", selectedString);
+        WebViewController *web = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+        web.URLString = @"http://www.zhikekeji.cn";
+        [self.navigationController pushViewController:web animated:YES];
+    };
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,17 +62,19 @@
 
 //获取验证码
 - (IBAction)codeButtonTap:(id)sender {
-    //正常状态下的背景颜色
-    UIColor *mainColor = [UIColor colorWithRed:84/255.0 green:180/255.0 blue:98/255.0 alpha:1.0f];
     //倒计时状态下的颜色
     UIColor *countColor = [UIColor lightGrayColor];
-    [self setTheCountdownButton:sender startWithTime:10 title:@"获取验证码" countDownTitle:@"s" mainColor:mainColor countColor:countColor];
+    [self setTheCountdownButton:sender startWithTime:10 title:@"获取验证码" countDownTitle:@"s" mainColor:GLOBALRED countColor:countColor];
 }
 
 //登录
 - (IBAction)loginButtonTap:(id)sender {
     BindingViewController *bindView = [[BindingViewController alloc]initWithNibName:@"BindingViewController" bundle:nil];
     [self.navigationController pushViewController:bindView animated:YES];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - button倒计时
@@ -106,6 +121,16 @@
 
 //新浪微博登录
 - (IBAction)SinaButtonTap:(id)sender {
+//    OSMessage *message = [[OSMessage alloc] init];
+//    message.title = [NSString stringWithFormat:@"这里是分享的内容"];
+//    message.image = [UIImage imageNamed:@"icon"];
+//
+//    [OpenShare shareToWeibo:message Success:^(OSMessage *message) {
+//        NSLog(@"分享到sina微博成功:\%@",message);
+//    } Fail:^(OSMessage *message, NSError *error) {
+//        NSLog(@"分享到sina微博失败:\%@\n%@",message,error);
+//    }];
+    
     [self getUserInfoForPlatform:0];
 }
 

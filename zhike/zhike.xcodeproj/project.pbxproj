@@ -41,6 +41,9 @@
 		C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C739218C1FCFFD0A004891E6 /* ZBNetworkManager.m */; };
 		C73921941FD104A4004891E6 /* ZBUrlArgumentFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */; };
 		C73921971FD15482004891E6 /* ZBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C73921961FD15482004891E6 /* ZBTabBar.m */; };
+		C74FB29D2021A68D0024A3DA /* JPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C74FB29B2021A68D0024A3DA /* JPLabel.m */; };
+		C74FB2A82021AA150024A3DA /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C74FB2A62021AA150024A3DA /* WebViewController.m */; };
+		C74FB2A92021AA150024A3DA /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C74FB2A72021AA150024A3DA /* WebViewController.xib */; };
 		C770731F200B48DD00E8BD1A /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C770731D200B48DD00E8BD1A /* QuestionTableViewCell.m */; };
 		C7707320200B48DD00E8BD1A /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C770731E200B48DD00E8BD1A /* QuestionTableViewCell.xib */; };
 		C77C9FF41FDF66EB003210F3 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C77C9FF21FDF66EB003210F3 /* SearchViewController.m */; };
@@ -141,6 +144,12 @@
 		C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBUrlArgumentFilter.m; sourceTree = "<group>"; };
 		C73921951FD15482004891E6 /* ZBTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBTabBar.h; sourceTree = "<group>"; };
 		C73921961FD15482004891E6 /* ZBTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBTabBar.m; sourceTree = "<group>"; };
+		C74FB29B2021A68D0024A3DA /* JPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLabel.m; sourceTree = "<group>"; };
+		C74FB29C2021A68D0024A3DA /* JPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLabel.h; sourceTree = "<group>"; };
+		C74FB29E2021A82F0024A3DA /* zhike-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "zhike-Bridging-Header.h"; sourceTree = "<group>"; };
+		C74FB2A52021AA150024A3DA /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		C74FB2A62021AA150024A3DA /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		C74FB2A72021AA150024A3DA /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		C770731C200B48DD00E8BD1A /* QuestionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
 		C770731D200B48DD00E8BD1A /* QuestionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
 		C770731E200B48DD00E8BD1A /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
@@ -417,10 +426,14 @@
 				C73921791FCD3515004891E6 /* User.m */,
 				C73921881FCFE5E9004891E6 /* RegisterModel.h */,
 				C73921891FCFE5E9004891E6 /* RegisterModel.m */,
+				C74FB2A52021AA150024A3DA /* WebViewController.h */,
+				C74FB2A62021AA150024A3DA /* WebViewController.m */,
+				C74FB2A72021AA150024A3DA /* WebViewController.xib */,
 				C7082F4B20102A2100A77B87 /* welcome */,
 				C77C9FD81FDE1E63003210F3 /* home */,
 				C77C9FDA1FDE1EA3003210F3 /* question */,
 				C77C9FD91FDE1E86003210F3 /* mine */,
+				C74FB29E2021A82F0024A3DA /* zhike-Bridging-Header.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -444,6 +457,15 @@
 				C73921931FD104A4004891E6 /* ZBUrlArgumentFilter.m */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		C74FB29A2021A68D0024A3DA /* JPLabel */ = {
+			isa = PBXGroup;
+			children = (
+				C74FB29B2021A68D0024A3DA /* JPLabel.m */,
+				C74FB29C2021A68D0024A3DA /* JPLabel.h */,
+			);
+			path = JPLabel;
 			sourceTree = "<group>";
 		};
 		C77C9FD81FDE1E63003210F3 /* home */ = {
@@ -478,6 +500,7 @@
 		C7847C80200360E700F2434B /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				C74FB29A2021A68D0024A3DA /* JPLabel */,
 				C7082F512010757800A77B87 /* UMSocial */,
 			);
 			path = ThirdLib;
@@ -617,6 +640,7 @@
 				TargetAttributes = {
 					C73920FD1FC7F98A004891E6 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					C73921151FC7F98A004891E6 = {
@@ -668,6 +692,7 @@
 				C73921521FC7FD56004891E6 /* QuestionViewController.xib in Resources */,
 				C7918D8C2004B7F7008AF75A /* FindMentorVC.xib in Resources */,
 				C7082F682010757900A77B87 /* UMSocialSDKPromptResources.bundle in Resources */,
+				C74FB2A92021AA150024A3DA /* WebViewController.xib in Resources */,
 				C7082F5020102A4400A77B87 /* LoginViewController.xib in Resources */,
 				C7707320200B48DD00E8BD1A /* QuestionTableViewCell.xib in Resources */,
 				C739214D1FC7FD43004891E6 /* HomeViewController.xib in Resources */,
@@ -750,6 +775,7 @@
 				C7918D8B2004B7F7008AF75A /* FindMentorVC.m in Sources */,
 				C73921381FC7FBD5004891E6 /* BaseTabBarController.m in Sources */,
 				C7082F4F20102A4400A77B87 /* LoginViewController.m in Sources */,
+				C74FB2A82021AA150024A3DA /* WebViewController.m in Sources */,
 				C7E040EC1FEA6159005D2CC2 /* LatestAskViewController.m in Sources */,
 				C73921561FC7FD62004891E6 /* MineViewController.m in Sources */,
 				C73921111FC7F98A004891E6 /* main.m in Sources */,
@@ -773,6 +799,7 @@
 				C7B673D41FD63EB700C2CA0E /* ZBCacheManager.m in Sources */,
 				C739214C1FC7FD43004891E6 /* HomeViewController.m in Sources */,
 				C739218D1FCFFD0A004891E6 /* ZBNetworkManager.m in Sources */,
+				C74FB29D2021A68D0024A3DA /* JPLabel.m in Sources */,
 				C73921351FC7FBA2004891E6 /* BaseNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -927,8 +954,9 @@
 			baseConfigurationReference = 8918B24BB3E171BD9FBD7726 /* Pods-zhike.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BNV27HH5PK;
+				DEVELOPMENT_TEAM = G97Q2KJ8SF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialUI",
@@ -946,9 +974,12 @@
 					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialSDKPlugin",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.zhike;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhike.qizhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OBJC_BRIDGING_HEADER = "zhike/Controllers/zhike-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -957,8 +988,9 @@
 			baseConfigurationReference = E6BCB10C52F102CFCA4D8FA3 /* Pods-zhike.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BNV27HH5PK;
+				DEVELOPMENT_TEAM = G97Q2KJ8SF;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialUI",
@@ -976,9 +1008,11 @@
 					"$(PROJECT_DIR)/zhike/ThirdLib/UMSocial/UMSocialSDKPlugin",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhoubo.zhike;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhike.qizhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OBJC_BRIDGING_HEADER = "zhike/Controllers/zhike-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
