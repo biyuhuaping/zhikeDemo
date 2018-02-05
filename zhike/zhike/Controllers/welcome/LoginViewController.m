@@ -69,6 +69,7 @@
 
 //登录
 - (IBAction)loginButtonTap:(id)sender {
+    [self.view endEditing:YES];
     BindingViewController *bindView = [[BindingViewController alloc]initWithNibName:@"BindingViewController" bundle:nil];
     [self.navigationController pushViewController:bindView animated:YES];
 }
